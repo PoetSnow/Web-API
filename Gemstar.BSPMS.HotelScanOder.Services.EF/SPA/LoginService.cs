@@ -15,7 +15,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF.SPA
     {
         public override string GetHandleDataType()
         {
-            return PostType.SPA_Login;
+            return postType.SPA_Login;
         }
 
         protected override string HandleData(string requestData)

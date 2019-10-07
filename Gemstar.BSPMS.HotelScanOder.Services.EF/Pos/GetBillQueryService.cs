@@ -14,8 +14,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF.Pos
     {
         public override string GetHandleDataType()
         {
-            return PostType.GetBillDetail;
-            // return "08";
+            return postType.GetBillDetail;
         }
 
         protected override string HandleData(string requestData)

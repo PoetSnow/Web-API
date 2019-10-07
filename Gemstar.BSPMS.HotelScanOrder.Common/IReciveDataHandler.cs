@@ -28,5 +28,6 @@ namespace Gemstar.BSPMS.HotelScanOrder.Common
         /// </summary>
         /// <returns>下一处理实例</returns>
         IReciveDataHandler GetNextHandler();
+
     }
 }

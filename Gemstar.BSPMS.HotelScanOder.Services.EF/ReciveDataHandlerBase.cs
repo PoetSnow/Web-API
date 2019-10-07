@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Gemstar.BSPMS.HotelScanOrder.Common;
+using Gemstar.BSPMS.HotelScanOrder.Common.Common;
 
 namespace Gemstar.BSPMS.HotelScanOrder.Services.EF
 {
@@ -14,6 +15,8 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF
     /// </summary>
     public abstract class ReciveDataHandlerBase : IReciveDataHandler
     {
+
+        public PostType postType { get { return new PostType(); } }
 
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF
             return defaultValue;
         }
 
-    
+
         public JavaScriptSerializer serializer
         {
             get { return new JavaScriptSerializer(); }
