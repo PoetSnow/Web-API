@@ -1,0 +1,481 @@
+﻿/* Index */
+.settlement {
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+
+.shopCart {
+    background-color: #eaeaea;
+}
+
+    .shopCart .mui-table-view {
+        height: 2.81rem;
+        overflow: auto;
+    }
+
+.shopCart-top {
+    width: 100%;
+    text-align: right;
+    padding: 10px 0;
+}
+
+    .shopCart-top a {
+        color: #666;
+        margin-right: 20px;
+    }
+
+.downOrder button {
+    border: 0;
+    float: left;
+    border-radius: 0;
+    font-size: .2rem;
+}
+
+.downOrder button:nth-child(1) {
+    width: 50%;
+    height: 0.5rem;
+    padding: 0px;
+    margin: 0px;
+    background-color: #c9c9d2;
+}
+
+.downOrder button:nth-child(2) {
+    width: 50%;
+    height: 0.5rem;
+    padding: 0px;
+    margin: 0px;
+    background-color: #c9c9d2;
+}
+
+.mui-scroll {
+    height: 100%;
+}
+
+.mui-slider-group {
+    height: calc(100% - 52px);
+}
+
+/* 选项卡内容 */
+.mui-control-content {
+    background-color: white;
+    height: 100%;
+}
+
+    .mui-control-content .mui-loading {
+        margin-top: 50px;
+    }
+/* 左侧选项卡 */
+.mui-row.mui-fullscreen > [class*="mui-col-"] {
+    height: 100%;
+}
+
+.mui-col-xs-3,
+.mui-control-content {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.mui-segmented-control .mui-control-item {
+    line-height: 50px;
+    width: 100%;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    background-color: #fff;
+}
+
+.mui-fullscreen {
+    clear: both;
+    position: relative;
+    height: calc(100%);
+}
+/* 左侧选项卡列表 */
+.mui-control-content {
+    position: relative;
+}
+
+.title {
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    color: #6d6d72;
+    font-size: 15px;
+    position: fixed;
+    padding: 20px 15px 10px;
+    background-color: #efeff4;
+}
+
+.mui-table-view .mui-media-object {
+    line-height: 1.2rem;
+    max-width: 1rem;
+    height: 1.2rem;
+}
+
+.mui-ellipsis, .mui-media-body h4 {
+    height: 0.2rem;
+}
+
+.shopCart .mui-media-body h4 {
+    margin: 0;
+    padding: 0.05rem 0;
+    width: 100%;
+    height: 0.18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 1; /*显示的行*/
+}
+
+
+.mui-col-xs-9 .p_title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 1; /*显示的行*/
+    color: #000000;
+    height: 0.21rem;
+}
+
+
+
+.mui-numbox {
+    width: 1.2rem;
+    border: 0 !important;
+    border-radius: 0.1rem !important;
+    background: none !important;
+    bottom: 0rem;
+    right: 0.05rem;
+    position: absolute;
+}
+
+    .mui-numbox button {
+        border: 0 !important;
+        border-radius: 0.2rem !important;
+    }
+
+    .mui-numbox .mui-input-numbox {
+        border-right: 0 !important;
+        border-left: 0 !important;
+    }
+
+.mui-btn-warning:enabled:active, .mui-btn-success:enabled:active {
+    border: 0;
+}
+
+.mui-scroll .pro_title {
+    display: inline-block;
+}
+
+.mui-scroll .pt_li {
+    position: relative;
+}
+
+.mui-scroll .pt_miaoshu1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 3; /*显示的行*/
+    padding-top: 0.04rem;
+    line-height: 0.2rem;
+    font-size: 0.12rem;
+    width: 1.35rem;
+    height: 0.45rem;
+}
+
+.mui-scroll .pt_miaoshu2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 1; /*显示的行*/
+    padding-top: 0.04rem;
+    line-height: 0.2rem;
+    font-size: 0.12rem;
+    width: 1.35rem;
+    height: 0.22rem;
+}
+
+.mui-scroll .pt_shuliang1 {
+    width: 1.2rem;
+    border: 0 !important;
+    border-radius: 0.1rem !important;
+    background: none !important;
+    position: absolute;
+    bottom: 0rem;
+    right: 0.05rem;
+}
+
+
+.mui-scroll .pt_shuliang2 {
+    width: 1.2rem;
+    border: 0 !important;
+    border-radius: 0.1rem !important;
+    background: none !important;
+    position: absolute;
+    bottom: 0.11rem;
+    right: 0.05rem;
+}
+
+.mui-scroll .pt_price {
+    width: 1rem;
+    height: 0.25rem;
+}
+
+.shopCart ul::after {
+    height: 0;
+}
+
+.pt_minus {
+    margin-right: 0.1rem;
+}
+
+.pt_add {
+    margin-left: 0.1rem;
+}
+
+.pt_biaoti {
+    line-height: 0.5rem;
+    width: 100%;
+    height: 0.5rem;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    left: 0;
+    top: 0;
+}
+
+
+
+.layout {
+    padding-top: 0.5rem !important;
+}
+
+.downOrder {
+    position: relative;
+}
+
+    .downOrder .sumcount {
+        position: absolute;
+        min-width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        left: 44%;
+        background-color: red;
+        line-height: 0.2rem;
+        font-size: 0.16rem;
+        display: none;
+    }
+
+.mui-control-item {
+    position: relative;
+}
+
+    .mui-control-item .itemcount {
+        position: absolute;
+        min-width: 0.16rem;
+        height: 0.16rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        right: 0.02rem;
+        background-color: red;
+        line-height: 0.16rem;
+        font-size: 0.14rem;
+        color: white;
+        display: none;
+    }
+
+.paylayer .layui-m-layercont i {
+    background-color: #4cd964 !important;
+}
+
+.paylayer .layui-m-layercont p {
+    color: #4cd964 !important;
+}
+
+.py_product {
+    height: calc(100% - 0) !important;
+    overflow-y: hidden;
+}
+
+
+.addA {
+    width: 30px;
+    display: block;
+    float: left;
+    background-image: url(/images/jf.png);
+    height: 30px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+
+.addB {
+    display: none;
+    float: left;
+    background-image: url(/images/j.png);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+
+.inputSpan {
+    display: none;
+    float: left;
+    width: 25px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.mui-media-body h4 {
+    float: left;
+    font-size: 0.2rem;
+    width: 100%;
+}
+
+.mui-ellipsis {
+    float: left;
+}
+
+#segmentedControlContents .mui-table-view .mui-media-object {
+    height: 0.5rem;
+}
+
+.mui-media-body > .mui-btn {
+    width: 120px;
+    height: 30px;
+    float: right;
+    background: #f9f9f9;
+}
+
+.mui-ellipsis .price {
+    color: #ff6a00;
+}
+/*消费项目*/
+.addA {
+    width: 30px;
+    display: block;
+    float: left;
+    background-image: url(/images/jf.png);
+    height: 30px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+
+.addB {
+    display: none;
+    float: left;
+    background-image: url(/images/j.png);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+
+.inputSpan {
+    display: none;
+    float: left;
+    width: 25px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.mui-media-body h4 {
+    float: left;
+    width: 100%;
+}
+
+.mui-ellipsis {
+    float: left;
+    margin-top:0.1rem;
+}
+
+#segmentedControlContents .mui-table-view .mui-media-object {
+    height: 0.5rem;
+}
+
+.mui-media-body > .mui-btn {
+    width: 100px;
+    height: 30px;
+    float: right;
+    background: #f9f9f9;
+}
+
+.mui-ellipsis .price {
+    color: #ff6a00;
+}
+
+
+.layout {
+    padding-top: 0.5rem !important;
+}
+
+.downOrder {
+    position: relative;
+}
+
+    .downOrder .sumcount {
+        position: absolute;
+        min-width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        left: 44%;
+        background-color: red;
+        line-height: 0.2rem;
+        font-size: 0.16rem;
+        display: none;
+    }
+
+.mui-control-item {
+    position: relative;
+}
+
+    .mui-control-item .itemcount {
+        position: absolute;
+        min-width: 0.16rem;
+        height: 0.16rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        right: 0.02rem;
+        background-color: red;
+        line-height: 0.16rem;
+        font-size: 0.14rem;
+        color: white;
+        display: none;
+    }
+
+.paylayer .layui-m-layercont i {
+    background-color: #4cd964 !important;
+}
+
+.paylayer .layui-m-layercont p {
+    color: #4cd964 !important;
+}
+
+.py_product {
+    height: calc(100% - 0) !important;
+    overflow-y: hidden;
+}
+
+.py_cemian {
+    height: calc(100vh - 1rem) !important;
+}
+
+
+
+.btn-active {
+    background-color: #ffffff !important;
+}
+.btn-all {
+   
+    background-color: #c9c9d2 ;
+}

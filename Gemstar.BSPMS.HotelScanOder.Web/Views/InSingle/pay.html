@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付订单界面</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=yes">
+    <link rel="stylesheet" href="../../Content/ScanOrder/reset.css">
+    <link rel="stylesheet" href="../../Content/ScanOrder/pay.css">
+</head>
+<body class="bj">
+    <div class="payHeader">
+        <a href="" class="goBack"></a>
+        <p class="payTitle">支付订单界面</p>
+    </div>
+    <div class="payContent">
+        <div class="payMoney">
+            <div class="payPrice">
+                <span>￥</span><b>20.00</b>
+            </div>
+            <p class="payText">捷信达测试酒店</p>
+        </div>
+        <div class="payMode">
+            <ul>
+                <li>
+                    <span>微信支付</span>
+                    <input type="radio" name="pay" checked="checked">
+                </li>
+                <li>
+                    <span>支付宝支付</span>
+                    <input type="radio" name="pay">
+                </li>
+                <li>
+                    <span>挂房账</span>
+                    <input type="radio" name="pay">
+                </li>
+                <li>
+                    <span>支付宝支付</span>
+                    <input type="radio" name="pay">
+                </li>
+                <li>
+                    <span>挂房账</span>
+                    <input type="radio" name="pay">
+                </li>
+            </ul>
+            <div class="more">
+                <span>更多支付方式</span>
+            </div>
+
+        </div>
+        <div class="payBtn" onclick="pay()">
+            确认支付
+        </div>
+    </div>
+
+    <!--点击说明弹出层-->
+    <div class="pay-shade" style="display:none;"></div>
+    <div class="payMessage">
+        <div class="roomNum">
+            <span>房间号：</span><input type="text">
+        </div>
+        <ul class="roomMessage">
+            <li>
+                <span>客人名：</span>
+                <p>202</p>
+            </li>
+            <li>
+                <span>余额：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>抵店时间：</span>
+                <p>4月1日</p>
+            </li>
+            <li>
+                <span>房价：</span>
+                <p>320</p>
+            </li>
+        </ul>
+        <ul class="payDetail">
+            <li>
+                <span>授权金额：</span>
+                <p>200</p>
+            </li>
+            <li>
+                <span>信用调节额：</span>
+                <p>200</p>
+            </li>
+            <li>
+                <span>可用余额：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>挂账限额：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>付款方式：</span>
+                <p>微信</p>
+            </li>
+            <li>
+                <span>已挂账金额：</span>
+                <p>微信</p>
+            </li>
+        </ul>
+        <ul class="payDetail">
+            <li>
+                <span>可用额度：</span>
+                <p>320</p>
+            </li>
+        </ul>
+        <div class="remark">
+            <span>备注：</span>
+            <p>无</p>
+        </div>
+        <div class="payClose" onclick="close_choose_attr()"></div>
+    </div>
+
+    <script type="text/javascript" src="../../Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/queue.js"></script>
+    <script>
+
+        function pay() {
+            $('.payMode input[type="radio"]:checked').each(function (i) {
+                if ($(this).prev().text() === '挂房账'){
+                    document.body.style.overflow='hidden';
+                    $(".payMessage").animate({height:'8.36rem'},[10000]);
+                    $(".pay-shade").show();
+                    $(".pay-shade").on('touchmove',function(e){
+                        e.preventDefault();  //阻止默认行为
+                    })
+                }
+            })
+        }
+        /*关闭弹窗方法*/
+        function close_choose_attr(){
+            document.body.style.overflow='';
+            $(".pay-shade").hide();
+            $('.payMessage').animate({height:'0'},[10000]);
+        }
+
+        $(function () {
+            $(".payMode li").filter(":lt(3)").show().end().filter(":gt(2)").hide();
+            $('.more').click(function () {
+                $(this).hide();
+                $(".payMode li").show();
+            })
+        })
+    </script>
+</body>
+</html>

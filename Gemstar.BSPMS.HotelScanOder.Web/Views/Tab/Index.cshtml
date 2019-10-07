@@ -1,0 +1,365 @@
+﻿@using Gemstar.BSPMS.HotelScanOrder.Common.Pos.Tab;
+@using Gemstar.BSPMS.HotelScanOrder.Common.PosEnum;
+
+@{
+    Layout = null;
+    var tabList = ViewBag.TabList as List<TabResultModel>;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>餐台</title>
+    <link href="~/Content/queue.css" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <script type='application/javascript' src='~/Scripts/fastclick.js'></script>
+    <link href="~/Content/Tab.css?id='@(new Random().Next(1,222222))'" rel="stylesheet" />
+    <style>
+
+        .loadwin .btn {
+            text-align: right;
+            padding: 12px 0px 12px;
+            pointer-events: auto;
+            user-select: none;
+            -webkit-user-select: none;
+            border-color: #1E9FFF;
+            background-color: #f55858;
+            width: 50%;
+            color: #fff;
+            border: 0;
+            width: 100%;
+            border-top: 1px solid #ccc;
+            left: 0;
+            bottom: 0;
+            clear: both;
+            text-align: center;
+            border-bottom-left-radius: 0.1rem;
+            border-bottom-right-radius: 0.1rem;
+        }
+
+        .loadwin .titlemsg {
+            color: #fff;
+            overflow: hidden;
+            text-align: center;
+            background-color: #969090;
+            border-radius: 0.1rem 0.1rem 0 0;
+            height: .6rem;
+            text-align: center;
+            line-height: .6rem;
+        }
+
+        .loadwin .content {
+            position: relative;
+            padding: 20px;
+            line-height: 24px;
+            word-break: break-all;
+            overflow: hidden;
+            font-size: 14px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="getnum">
+        <div class="content" id="Content">
+            <div class="head_div">
+                <div class="head">
+                    @*<a href="/account/lineup?loginflag=@ViewBag.sysflag"> <img class="fanhui" src="~/images/back.png" />  </a>*@
+                    <p class="title titleCenter">餐台</p>
+                    <!--<a href="javascript:window.location.reload();" style="visibility:hidden">刷新</a>-->
+                </div>
+
+                <div class="tabchange">
+
+                    <ul class="tabul">
+                        @{
+                            var refeList = ViewBag.RefeList as List<RefeResultModel>;
+                            if (refeList.Count > 1)
+                            {
+                                <li class="tabli click" data-id="" id="typeAll">
+                                    <a href="javascript:void(0)" class="taba"><span class="title">全部</span>    </a>
+                                </li>
+                                foreach (var item in refeList)
+                                {
+                                    <li class="tabli " data-id="@item.RefeId" id="type@(item.RefeId)">
+                                        <a href="javascript:void(0)" class="taba"><span class="title">@item.RefeCname</span>   </a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+
+                                foreach (var item in refeList)
+                                {
+                                    <li class="tabli click" data-id="@item.RefeId" id="type@(item.RefeId)">
+                                        <a href="javascript:void(0)" class="taba"><span class="title">@item.RefeCname</span>   </a>
+                                    </li>
+                                }
+                            }
+
+                        }
+                    </ul>
+                </div>
+                <ul class="status-list">
+                    <li>
+                        <i class="staus-empty"></i>
+                        <span>空桌</span>
+                    </li>
+                    <li>
+                        <i class="staus-repast"></i>
+                        <span>就座</span>
+                    </li>
+
+                    <li>
+                        <i class="staus-reserve"></i>
+                        <span>未清台</span>
+                    </li>
+                    <li>
+                        <i class="staus-serving"></i>
+                        <span>预定</span>
+                    </li>
+                    <li>
+                        <i class="staus-call"></i>
+                        <span>维修</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab_content">
+                @Html.Partial("_TabStatus", tabList)
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/template" id="quhaotmp">
+        <div class="quhao_div">
+            <div class="xinxi">
+                ${tabNo}/${tabName}
+
+            </div>
+            <form id="formopenTab" action="/InSingle/Index" method="post" name="formopenTab">
+                <input type="hidden" id="TabNo" name="TabNo" value="${tabNo}" />
+                <input type="hidden" id="RefeId" name="RefeId" value="${RefeId}" />
+                <input type="hidden" id="Tabid" name="Tabid" value="${tabId}" />
+                <input type="hidden" id="tabName" name="tabName" value="${tabName}" />
+
+                <ul class="openTab">
+                    <li><span>人数：</span><input type="number" id="IGuest" name="IGuest" /></li>
+                    <li><span>营业经理：</span><input type="text" id="Sale" name="Sale" /></li>
+                </ul>
+                <span class="quhao" id="openTab">确定</span>
+            </form>
+
+        </div>
+    </script>
+
+
+
+    <script type="text/template" id="getsuccesstmp">
+        <div class="tishi">
+            <p class="title">${title}</p>
+            <p class="no">${msg}</p>
+        </div>
+    </script>
+    <script type="text/template" id="alertMsg">
+        <div class="titlemsg">提示</div>
+        <div class="content">${content}</div>
+        <div class="btn" onclick="alertClose()">确定</div>
+    </script>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/ScanOrder/globol.js"></script>
+    <script src="~/Scripts/ScanOrder/juicer-min.js"></script>
+    <script src="~/Scripts/ScanOrder/layer_mobile/layer.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script>
+        var refeCode = "";
+        $(function () {
+            //定时刷新餐台
+            RefreshTabList();
+            window.setInterval("RefreshTabList()", 5000);
+            $(".tabli").click(function () {
+                var index = $(this).index();
+                var selectindex = $(".tabli.click").index();
+                if (index != selectindex) {
+                    //一秒禁止点击
+                    $(this).addClass('click').siblings().removeClass('click');
+                    refeCode = $(this).attr("data-id");
+                    GetTabList(refeCode);
+                }
+
+            });
+
+            setTab();
+            setTabBackClass();
+
+
+            //业务事件
+            $("body").on('click', '#openTab', function (e) {
+
+                $("#formopenTab").submit();
+                //document.write("<form action=/InSingle/Index method='post' name='form1' style='display:none'>");
+                //document.write("<input type=hidden name='IGuest' value='" + personNum + "'");
+                //document.write("<input type=hidden name='Tabid' value='" + $("#tabId").val() + "'");
+                //document.write("<input type=hidden name='TabNo' value='" + $("#tabNo").val() + "'");
+                //document.write("<input type=hidden name='Sale' value='" + manager + "'");
+                //document.write("<input type=hidden name='RefeId' value='" + $("#RefeId").val() + "'");
+                //document.write("</form>");
+                //document.form1.submit();
+
+            })
+        })
+
+        function isLockTab(tabId, tabNo, billNo, tabStatus,TabName,refeId)
+        {
+            var _data = {
+                tabNo: tabNo,
+                tabName: TabName,
+                RefeId: refeId,
+                tabId: tabId
+            }
+            //空净餐台打开开台界面
+            if (tabStatus=="7") {
+                layer.closeAll();
+
+                var perinfotmp = $("#quhaotmp").html();
+                var perinfohtml = juicer(perinfotmp, _data);
+                //页面层
+                layer.open({
+                    type: 1
+                    , anim: 'up'
+                    , className: "qhlayer"
+                    , content: perinfohtml
+                    , style: 'position:fixed; bottom:0; left:0; width: 100%;  padding:0; border:none;',
+                });
+            }
+            else if (tabStatus == "6") {
+                lAlert("餐台正在维修中！");
+            }
+            else {
+                location.href = '/InSingle/Index?BillId=' + billNo + "&RefeId=" + refeId + "&Tabid=" + tabId + "&tabNo=" + tabNo + "&TabName=" + TabName;
+            }
+
+        }
+
+        //营业点点击事件
+        function GetTabList(refeCode) {
+             var parms = {
+                 url: "@Url.Action("_TabStatus", "Tab")",
+                 type: 'post',
+                 dataType: "html",
+                 data: { refeId: refeCode }
+           };
+           JQajaxPromise(parms)
+               .then(function (data) {
+                   $(".tab_content").html(data);
+                   setTab();
+                   setTabBackClass();
+                })
+                .catch(function (error) {
+                       // layer.msg(error, 1);
+                 })
+        }
+        //定时刷新餐台
+        function RefreshTabList() {
+            GetTabList(refeCode);
+        }
+
+
+        function setTab() {
+            var tabdiv = $(".tab_content .tab_div");
+            var count = $(tabdiv).find("li").length;  //餐台数量
+
+            var width = document.body.clientWidth;  //屏幕宽度
+            var liwidth = $(tabdiv).find("li").first().outerWidth();  //元素宽度
+            var s = parseInt(width / liwidth);  //每行可以放几个
+
+            var s1 = count % s; //取余数
+            if (s1>0) {
+                var html = "";
+                for (var i = 0; i < s - s1; i++) {
+                    html += "<li style=\"visibility: hidden;\" class='tabc_li' > <a href=\"javascript:void (0);\" >";
+                    html += " < span > </span >"
+                    html += "<span></span>"
+                    html += " </a > </li>";
+                }
+
+                $(tabdiv).find("ul").append(html);
+            }
+
+        }
+        //设置餐台样式
+        function setTabBackClass() {
+            var list = $(".tabc_ul ").find("li");
+            list.each(function () {
+                var status = $(this).attr("data-staus");
+
+                if (status == '@((byte)PosTabStatusEnum.已买单未离座)') {
+                    $(this).attr("class", "tabc_li  staus-reserve");
+                }
+                else if (status == '@((byte)PosTabStatusEnum.已打单超时未买单)') {
+                    $(this).attr("class", "tabc_li  staus-repast");
+                }
+                else if (status == '@((byte)PosTabStatusEnum.落单后超时未有再点菜)') {
+                    $(this).attr("class", "tabc_li staus-repast");
+                }
+                else if (status == '@((byte)PosTabStatusEnum.就座)') {
+                    $(this).attr("class", "tabc_li staus-repast");
+                }
+                else if (status == '@((byte)PosTabStatusEnum.预订)') {
+                    $(this).attr("class", "tabc_li staus-serving");
+                }
+                else if (status == '@((byte)PosTabStatusEnum.维修)') {
+                    $(this).attr("class", "tabc_li staus-call");
+                }
+                else if (status == '@((byte)PosTabStatusEnum.空净)') {
+                    $(this).attr("class", "tabc_li staus-empty");
+                }
+            });
+        }
+
+
+
+        //弹窗提示
+        function layerwindow(data) {
+            var successtmp = $("#getsuccesstmp").html();
+
+            var successtmphtml = juicer(successtmp, data);
+            layer.closeAll();
+            //页面层
+            layer.open({
+                type: 1
+                , anim: 'up'
+                , className: "getsuccess"
+                , content: successtmphtml
+                , time: 2
+                , shade: 'background-color: rgba(0,0,0,.2)'
+            });
+        }
+
+        function lAlert(msg) {
+            layer.closeAll();
+            var _data = { content: msg };
+            var perinfotmp = $("#alertMsg").html();
+            var perinfohtml = juicer(perinfotmp, _data);
+            //页面层
+            alertIndex = layer.open({
+                type: 1
+                , anim: 'up'
+                , className: "loadwin"
+                , content: perinfohtml
+                , shade: 'background-color: rgba(0,0,0,.2)'
+            });
+        }
+        function alertClose() {
+            layer.close(alertIndex);
+        }
+    </script>
+</body>
+</html>

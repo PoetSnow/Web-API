@@ -1,0 +1,200 @@
+﻿@model Gemstar.BSPMS.HotelScanOrder.Common.Pos.Report.ReportInBalanceListPostModel
+
+@{
+    ViewBag.Title = "收入平衡表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Css{
+    <link href="~/Content/queue.css" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <script type="application/javascript" src="~/Scripts/fastclick.js"></script>
+    <link href="~/Content/Report.css?rnd=@(new Random().Next(1, 222222))" rel="stylesheet" />
+}
+@*查询模块*@
+
+<div class="query_div">
+    <div class="drop">
+
+    </div>
+    <div class="mask">
+
+    </div>
+    <ul>
+        <li>
+            @Html.DropDownListFor(a => a.As_FindType, new List<SelectListItem> { new SelectListItem { Text = "按发生营业日", Value = "1", Selected = true }, new SelectListItem { Text = "按买单营业日", Value = "2" } })
+        </li>
+        <li><input type="date" id="As_StartDate" name="As_StartDate" class="txtBsDate" value="@Model.As_StartDate" /></li>
+    </ul>
+</div>
+@*<div class="reportTitle_div">
+
+    </div>*@
+<ul id="ulDept" class="mui-table-view">
+    <li class="mui-table-view-cell">
+        <div>
+            <div class="tabno">
+                部门
+            </div>
+            <div class="notabno">
+                销售额
+            </div>
+            <div class="notabno">
+                净额
+            </div>
+        </div>
+    </li>
+    @*{
+            foreach (var l in list)
+            {
+                <li class="mui-table-view-cell">
+                    <div>
+                        <div class="tabno">
+                            @l.DeptClassName
+                        </div>
+                        <div class="notabno">
+                            @l.SellAmount
+                        </div>
+                        <div class="notabno">
+                            @l.Seqid
+                        </div>
+                    </div>
+                </li>
+            }
+        }*@
+</ul>
+<ul id="ulPayMode" class="mui-table-view" style="margin-top:.5rem;">
+    <li class="mui-table-view-cell">
+        <div>
+            <div class="tabno">
+                付款方式
+            </div>
+            <div class="notabno">
+                单数
+            </div>
+            <div class="notabno">
+                销售金额
+            </div>
+            <div class="notabno">
+                折扣金额
+            </div>
+            <div class="notabno">
+                公司账
+            </div>
+        </div>
+    </li>
+</ul>
+@section Scripts{
+    <script>
+
+        var url = "@Url.Action("GetInBalanceListData", "Report")";
+
+        var InBalanceList = {
+            GetInBalanceList: function (model) {
+                var parms = {
+                    url: url,
+                    type: 'post',
+                    dataType: "json",
+                    data: model
+                };
+
+                JQajaxPromiseForLayer(parms).then(function (data) {
+                    if (data.length > 0) {
+                        var deptLi = "";
+                        var payModeLi = "";
+                        $.each(data, function (index, value) {
+                            if (value.Flag == 1) {
+                                deptLi += `<li class="mui-table-view-cell">
+                                    <div>
+                                        <div class="tabno" onclick="InBalanceList.OpenSellDetailList(this);" data-src="`+ value.Code + `">
+                                            `+ value.DeptClassName + `
+                                        </div>
+                                        <div class="notabno">
+                                            `+ (value.SellAmount == null ? "&nbsp;" : value.SellAmount) + `
+                                        </div>
+                                        <div class="notabno">
+                                            `+ (value.GainAmount == null ? "&nbsp;" : value.GainAmount) + `
+                                        </div>
+                                    </div>
+                                </li>`;
+                            }
+
+                            if (value.Flag == 2) {
+                                payModeLi += `<li class="mui-table-view-cell">
+                                    <div>
+                                        <div class="tabno" onclick="InBalanceList.OpenBillList(this);" data-src="`+ value.Code + `">
+                                            `+ value.DeptClassName + `
+                                        </div>
+                                        <div class="notabno">
+                                            `+ (value.DeptClassName == "" ? "&nbsp;" : value.Bill) + `
+                                        </div>
+                                        <div class="notabno">
+                                            `+ (value.SellAmount == null ? "&nbsp;" : value.SellAmount) + `
+                                        </div>
+                                        <div class="notabno">
+                                            `+ (value.DiscAmount == null ? "&nbsp;" : value.DiscAmount) + `
+                                        </div>
+                                        <div class="notabno">
+                                            `+ (value.ComAmount == null ? "&nbsp;" : value.ComAmount) + `
+                                        </div>
+                                    </div>
+                                </li>`;
+                            }
+                        })
+                        $("#ulDept").children(":not(:first)").remove();
+                        $("#ulPayMode").children(":not(:first)").remove();
+                        $("#ulDept").append(deptLi);
+                        $("#ulPayMode").append(payModeLi);
+                    }
+                    else { mui.toast('暂未查询到数据');}
+                })
+                .catch(function (error) {
+                    // layer.msg(error, 1);
+                })
+            },
+            OpenBillList: function (obj) {
+                var As_StartDate = $("#As_StartDate").val();
+                var PayModeId = $.trim($(obj).attr("data-src"));
+                if (PayModeId != "null" && PayModeId.length > 0)
+                    window.location.href = `@Url.Action("BillList")?As_StartDate=${As_StartDate}&PayModeId=${PayModeId}`;
+                else
+                    return;
+            },
+            OpenSellDetailList: function (obj) {
+                var As_StartDate = $("#As_StartDate").val();
+                var As_DeptClassNo = $.trim($(obj).attr("data-src"));
+                if (As_DeptClassNo != "null" && As_DeptClassNo.length > 0)
+                    window.location.href = `@Url.Action("SellDetailList")?As_StartDate=${As_StartDate}&As_DeptClassNo=${As_DeptClassNo}`;
+                else
+                    return;
+            }
+        }
+
+        $(function () {
+
+           var model = {
+                Hid: "@Model.Hid",
+                Module: "@Model.Module",
+                As_FindType: $("#As_FindType").val(),
+                As_StartDate: $("#As_StartDate").val(),
+                As_EndDate: $("#As_StartDate").val(),
+                Refeid: ""
+            }
+
+            InBalanceList.GetInBalanceList(model);
+
+            $("#As_FindType,#As_StartDate").change(function () {
+                var model = {
+                Hid: "@Model.Hid",
+                Module: "@Model.Module",
+                As_FindType: $("#As_FindType").val(),
+                As_StartDate: $("#As_StartDate").val(),
+                As_EndDate: $("#As_StartDate").val(),
+                Refeid: ""
+            }
+
+                InBalanceList.GetInBalanceList(model);
+            })
+        })
+    </script>
+}

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="height:100%;">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>@ViewBag.Title</title>
+
+    <!-- Css -->
+    @*<link href="~/Content/Order/main.css" rel="stylesheet" />*@
+    <link href="~/Content/queue.css?id=@(new Random().Next(1,2222222))" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <script type='application/javascript' src='~/Scripts/fastclick.js'></script>
+    
+    @RenderSection("Css", required: false)
+</head>
+<body>
+   
+   @RenderBody()
+   <script type="text/template" id="loadtmp">
+        <div class="tishi">
+            <p class="title">@Resources.GlobalResource.ReadCard</p> 
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+              <div class="bounce4"></div>
+              <div class="bounce5"></div>
+              <div class="bounce6"></div>
+              <div class="bounce7"></div>
+            </div>
+        </div>
+    </script>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/ScanOrder/globol.js"></script>
+    <script src="~/Scripts/ScanOrder/juicer-min.js"></script>
+    <script src="~/Scripts/ScanOrder/layer_mobile/layer.js"></script>
+    <script src="~/Scripts/mobileSelect.js/js/mobileSelect.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+     <script>
+        var LanguageSelect1;
+        $(function () {
+            LoadLanguageSelect1();
+            //箭头事件
+            $('.xia').click(function () {
+                LanguageSelect1.show();           
+            });
+           // layerwindow()
+        });
+
+        function LoadLanguageSelect1() {
+            LanguageSelect1 = new MobileSelect({
+                trigger: '#trigger1',
+                title: '@Resources.GlobalResource.Language',
+                wheels: [
+                    {
+                        data: [
+                            { id: 'zh', value: '中文' },
+                            {id:'en', value:'English'},
+                            { id: 'ja', value: 'にほんご' }
+                            ]
+                    },
+                ],
+            position: ['@ViewBag.LanguageIndex'], //初始化定位
+            ensureBtnText: '@Resources.GlobalResource.Affirm',
+            cancelBtnText:'@Resources.GlobalResource.Cancel',
+            onShow: function () {                       
+                $(".xia").css('transform','rotate(180deg)');
+            },
+            onHide: function () {                         
+                $(".xia").css('transform','rotate(0deg)');
+                },
+            callback: function (indexArr, data) {
+                    var lahead = data[0].id;
+                    $.cookie('BSSPALanguage', lahead, { expires: 366, path: '/' });
+                    if (window.location.href.indexOf('?') === -1) 
+                        window.location.href = window.location.href + "?random=" + 10000 * Math.random();
+                    else
+                      window.location.href = window.location.href+"&random="+10000*Math.random();
+                }	
+            });   
+        }
+        //弹窗提示
+        function layerwindow() {
+            var loadhtml = $("#loadtmp").html();
+            layer.closeAll();
+                        //页面层
+                        layer.open({
+                            type: 1
+                            , anim: 'up'
+                            , className: "loadwin"
+                            , content: loadhtml
+                            , time: 1000
+                            , shadeclose: true
+                            ,shade: 'background-color: rgba(0,0,0,.2)'
+                        });
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

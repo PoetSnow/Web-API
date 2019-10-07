@@ -1,0 +1,100 @@
+﻿@model List<Gemstar.BSPMS.HotelScanOrder.Common.Pos.Report.ReportBillDetailListResultModel>
+
+
+@{
+    ViewBag.Title = "账单详细信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string ChangeDecimal(decimal? amount)
+    {
+        return ((amount == null || Convert.ToDecimal(amount) == 0) ? "0" : Convert.ToDecimal(amount).ToString("0.00"));
+    }
+
+}
+@section Css{
+    <link href="~/Content/queue.css" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <script type="application/javascript" src="~/Scripts/fastclick.js"></script>
+    <link href="~/Content/Report.css?rnd=@(new Random().Next(1, 222222))" rel="stylesheet" />
+}
+
+<div class="mui-card">
+    <!--页眉，放置标题-->
+    @*<div class="mui-card-header">页眉</div>*@
+    <!--内容区-->
+    <div class="mui-card-content">
+        <div id="billInfo" style="padding:25px;line-height:.3rem;font-size:.3rem;padding: 20px 40px;">
+            <p>　房台号：<span>@(Model.FirstOrDefault().TabName)</span></p>
+            <p>结账时间：<span>@(Model.FirstOrDefault().PayRecord)</span></p>
+            <p>　菜品价：<span>@(ChangeDecimal(Model.FirstOrDefault().DishAmount))</span></p>
+            <p>　服务费：<span>@(ChangeDecimal(Model.FirstOrDefault().ServiceAmt))@(ChangeDecimal(Model.FirstOrDefault().ServiceAmt) != "0" ? "" : "（免服务费）")</span></p>
+            <p>　　折扣：<span>@(ChangeDecimal(Model.FirstOrDefault().TotDiscount))</span></p>
+            <p>　　实收：<span>@(ChangeDecimal(Model.FirstOrDefault().TotAmount)) @(!string.IsNullOrEmpty(Model.FirstOrDefault().PayMode) ? "(" + Model.FirstOrDefault().PayMode + ")" : "")</span></p>
+        </div>
+    </div>
+    <!--页脚，放置补充信息或支持的操作-->
+    <div class="mui-card-footer">
+        <ul class="mui-table-view" style="width: 100%;font-size:.3rem">
+            <li class="mui-table-view-cell">
+                <div style="">
+                    <div class="tabno">
+                        菜品
+                    </div>
+                    <div class="notabno">
+                        数量
+                    </div>
+                    <div class="notabno">
+                        金额
+                    </div>
+                </div>
+            </li>
+
+            @{
+                foreach (var item in Model)
+                {
+                    <li class="mui-table-view-cell">
+                        <div>
+                            <div class="tabno">
+                                @item.DishName
+                            </div>
+                            <div class="notabno">
+                                @ChangeDecimal(item.Quantity)
+                            </div>
+                            <div class="notabno">
+                                @item.Amount
+                            </div>
+                        </div>
+                    </li>
+                }
+
+            }
+        </ul>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var url = "@Url.Action("BillDetailList", "Report")";
+
+        var BillList = {
+            GetBillList: function (model) {
+                $.getJSON(url,
+                    model, function (data) {
+                        $(".body_div").html(JSON.stringify(data));
+                })
+            }
+        }
+
+        $(function () {
+            var model = {
+                Hid: "",
+                Module:"",
+                As_FindType: "1",
+                As_StartDate: "2018-04-17",
+                As_EndDate: "2018-04-17",
+                Refeid:""
+            }
+            //BillList.GetBillList(model);
+        })
+    </script>
+}

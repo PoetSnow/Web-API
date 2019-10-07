@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+@model List<Gemstar.BSPMS.HotelScanOrder.Common.Pos.Item.ItemResultModel>
+
+@{
+    foreach (var item in Model)
+    {
+        <li class="mui-table-view-cell mui-media">
+            <img class="mui-media-object mui-pull-left" src="@item.PicUrl2" />
+            <div class="mui-media-body">
+                <h4>@item.ItemName</h4>
+                <p class='mui-ellipsis'>
+                    <i class="fa fa-rmb price" aria-hidden="true"></i><label class="price">@item.Price</label>
+                </p>
+                @if (item.IsAutoaction == true || item.IsMultiUnit == true)
+                {
+                    if (item.IsSellout == true)    //沽清菜式无法进行点击
+                    {
+                        <div class="specification">
+                            <div type="button"  style="background-color:#acacac;border-width:1px;" >规格</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="specification">
+                            <div type="button"style="border-width:1px;" onclick="selectSpec(this,@ViewBag.specFlag)" data-name="@item.ItemName" data-id="@item.ItemId" data-subclassId="@item.Itemsubid" data-isSellout="@item.IsSellout" data-isLargess="@item.IsLargess" data-isMultiUnit="@item.IsMultiUnit" data-isAutoaction="@item.IsAutoaction" data-itemName="@item.ItemName" data-unitName="@item.UnitName">规格</div>
+                        </div>
+                    }
+
+
+                }
+                else
+                {
+                    if (item.IsSellout == true)
+                    {
+                        <div class="addBtn">
+
+                            <a class="addC"></a>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="addBtn">
+                            <a onclick="reductionQuantity(this)" class="addB" style="display: none;" data-id="@item.ItemId" data-unitId="@item.UnitId" data-price="@item.Price" data-subclassId="@item.Itemsubid" data-isSellout="@item.IsSellout" data-isLargess="@item.IsLargess" data-isMultiUnit="@item.IsMultiUnit" data-isAutoaction="@item.IsAutoaction" data-itemName="@item.ItemName" data-unitName="@item.UnitName"></a>
+
+                            <span class="inputSpan" data-id="@item.ItemId"></span>
+                            <a onclick="addQuantity(this)" class="addA" data-id="@item.ItemId" data-unitId="@item.UnitId" data-price="@item.Price" data-subclassId="@item.Itemsubid" data-isSellout="@item.IsSellout" data-isLargess="@item.IsLargess" data-isMultiUnit="@item.IsMultiUnit" data-isAutoaction="@item.IsAutoaction" data-itemName="@item.ItemName" data-unitName="@item.UnitName"></a>
+
+                        </div>
+
+                    }
+
+
+                }
+
+
+
+
+            </div>
+        </li>
+    }
+
+}

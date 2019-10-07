@@ -1,0 +1,627 @@
+﻿/* Index */
+.settlement {
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+
+.shopCart {
+    background-color: #eaeaea;
+}
+
+    .shopCart .mui-table-view {
+        height: 2.81rem;
+        overflow: auto;
+    }
+
+.shopCart-top {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .34rem .4rem .12rem .37rem;
+}
+.shopCart-top strong{
+    font-size: .3rem;
+    color: #333333;
+}
+
+    .shopCart-top a {
+        width: .26rem;
+        height: .26rem;
+        background: url(/images/close.png) no-repeat center;
+        background-size: .26rem .26rem;
+    }
+
+.downOrder button {
+    border: 0;
+    float: left;
+    border-radius: 0;
+    font-size: .34rem;
+    color: #333333;
+}
+
+.downOrder button:nth-child(1) {
+    width: 50%;
+    height: 0.98rem;
+    padding: 0px;
+    margin: 0px;
+    background-color: #FFFFFF;
+}
+
+.downOrder button:nth-child(2) {
+    width: 50%;
+    height: 0.98rem;
+    padding: 0px;
+    margin: 0px;
+    background-color: #FFFFFF;
+}
+.addNum{
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.mui-scroll {
+    height: 100%;
+}
+
+.mui-slider-group {
+    height: calc(100% - .98rem);
+}
+/* 选项卡内容 */
+.mui-control-content {
+    background-color: white;
+    height: 100%;
+}
+
+    .mui-control-content .mui-loading {
+        margin-top: 50px;
+    }
+/* 左侧选项卡 */
+.mui-row.mui-fullscreen > [class*="mui-col-"] {
+    height: 100%;
+}
+
+.mui-col-xs-3,
+.mui-control-content {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.mui-segmented-control .mui-control-item {
+    line-height: .78rem;
+    width: 100%;
+    font-size: .28rem;
+    color: #333333;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    background-color: #fff;
+}
+
+.mui-fullscreen {
+    clear: both;
+    position: relative;
+    height: calc(100%);
+}
+.mui-fullscreen::-webkit-scrollbar {
+    display: none;
+}
+/* 左侧选项卡列表 */
+.mui-control-content {
+    position: relative;
+}
+
+.title {
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    color: #6d6d72;
+    font-size: 15px;
+    position: fixed;
+    padding: 20px 15px 10px;
+    background-color: #efeff4;
+}
+
+.mui-table-view .mui-media-object {
+    /*line-height: 1.2rem;
+    max-width: 1rem;
+    height: 1.2rem;*/
+}
+
+.shopCart .mui-media-body h4 {
+    margin: 0;
+    padding: 0.05rem 0;
+    width: 100%;
+    height: 0.18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 1; /*显示的行*/
+}
+
+
+.mui-col-xs-9 .p_title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 1; /*显示的行*/
+    color: #000000;
+    height: 0.21rem;
+}
+
+
+
+.mui-numbox {
+    width: 1.2rem;
+    border: 0 !important;
+    border-radius: 0.1rem !important;
+    background: none !important;
+    bottom: 0rem;
+    right: 0.05rem;
+    position: absolute;
+}
+
+    .mui-numbox button {
+        border: 0 !important;
+        border-radius: 0.2rem !important;
+    }
+
+    .mui-numbox .mui-input-numbox {
+        border-right: 0 !important;
+        border-left: 0 !important;
+    }
+
+.mui-btn-warning:enabled:active, .mui-btn-success:enabled:active {
+    border: 0;
+}
+
+.mui-scroll .pro_title {
+    display: inline-block;
+}
+
+.mui-scroll .pt_li {
+    position: relative;
+}
+
+.mui-scroll .pt_miaoshu1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 3; /*显示的行*/
+    padding-top: 0.04rem;
+    line-height: 0.2rem;
+    font-size: 0.12rem;
+    width: 1.35rem;
+    height: 0.45rem;
+}
+
+.mui-scroll .pt_miaoshu2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /*作为弹性伸缩盒子模型显示。*/
+    -webkit-box-orient: vertical; /*设置伸缩盒子的子元素排列方式--从上到下垂直排列*/
+    -webkit-line-clamp: 1; /*显示的行*/
+    padding-top: 0.04rem;
+    line-height: 0.2rem;
+    font-size: 0.12rem;
+    width: 1.35rem;
+    height: 0.22rem;
+}
+
+.mui-scroll .pt_shuliang1 {
+    width: 1.2rem;
+    border: 0 !important;
+    border-radius: 0.1rem !important;
+    background: none !important;
+    position: absolute;
+    bottom: 0rem;
+    right: 0.05rem;
+}
+
+
+.mui-scroll .pt_shuliang2 {
+    width: 1.2rem;
+    border: 0 !important;
+    border-radius: 0.1rem !important;
+    background: none !important;
+    position: absolute;
+    bottom: 0.11rem;
+    right: 0.05rem;
+}
+
+.mui-scroll .pt_price {
+    width: 1rem;
+    height: 0.25rem;
+}
+
+.shopCart ul::after {
+    height: 0;
+}
+
+.pt_minus {
+    margin-right: 0.1rem;
+}
+
+.pt_add {
+    margin-left: 0.1rem;
+}
+
+.pt_biaoti {
+    line-height: 0.5rem;
+    width: 100%;
+    height: 0.5rem;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    left: 0;
+    top: 0;
+}
+
+
+
+.layout {
+    padding-top: 0.5rem !important;
+}
+
+.downOrder {
+    position: relative;
+}
+
+    .downOrder .sumcount {
+        position: absolute;
+        min-width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        left: 44%;
+        background-color: red;
+        line-height: 0.2rem;
+        font-size: 0.16rem;
+        display: none;
+    }
+
+.mui-control-item {
+    position: relative;
+}
+
+    .mui-control-item .itemcount {
+        position: absolute;
+        min-width: 0.16rem;
+        height: 0.16rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        right: 0.02rem;
+        background-color: red;
+        line-height: 0.16rem;
+        font-size: 0.14rem;
+        color: white;
+        display: none;
+    }
+
+.paylayer .layui-m-layercont i {
+    background-color: #4cd964 !important;
+}
+
+.paylayer .layui-m-layercont p {
+    color: #4cd964 !important;
+}
+
+.py_product {
+    height: calc(100% - 0) !important;
+    overflow-y: hidden;
+}
+
+
+
+
+.inputSpan {
+    display: none;
+    float: left;
+    width: 25px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+#segmentedControlContents .mui-table-view .mui-media-object {
+    height: 0.5rem;
+}
+
+.mui-media-body > .mui-btn {
+    width: 120px;
+    height: 30px;
+    float: right;
+    background: #f9f9f9;
+}
+
+.mui-ellipsis .price {
+    color: #ff6a00;
+}
+/*消费项目*/
+.addBtn{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: .1rem;
+}
+.addA {
+    width: .48rem;
+    height: .48rem;
+    background-image: url(/images/jf.png);
+    background-repeat: no-repeat;
+    background-size: .48rem .48rem;
+    background-position: center;
+}
+
+.addB {
+    width: .48rem;
+    height: .48rem;
+    background-image: url(/images/j.png);
+    background-repeat: no-repeat;
+    background-size: .48rem .48rem;
+    background-position: center;
+}
+.addC {
+    width: .48rem;
+    height: .48rem;
+    background-image: url(/images/jia.png);
+    background-repeat: no-repeat;
+    background-size: .48rem .48rem;
+    background-position: center;
+}
+
+.inputSpan {
+    display: none;
+    float: left;
+    width: 25px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.mui-media-body h4 {
+    font-size: .28rem;
+    color: #333;
+    font-weight: bold;
+    line-height: .36rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+}
+.mui-table-view-cell:after{
+    background-color: transparent;
+}
+
+#segmentedControlContents .mui-table-view .mui-media-object {
+    height: 1.8rem;
+    width: 1.8rem;
+    line-height: 1.8rem;
+    max-width:1.8rem ;
+}
+.mui-table-view .mui-media-object.mui-pull-left{
+    margin-right: .29rem;
+}
+.specification{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    justify-content: flex-end;
+}
+.specification>div{
+    width: 1.1rem;
+    height: .48rem;
+    font-size: .28rem;
+    color: #333;
+    border: .01rem solid #C8C8C8;
+    border-radius: .08rem;
+    text-align: center;
+    line-height: .48rem;
+}
+
+.mui-ellipsis .price {
+    font-size: .26rem;
+    color: #FF4C0D;
+}
+.mui-media-body .mui-ellipsis label{
+    font-size: .30rem;
+    margin-left: .05rem;
+}
+
+.layout {
+    padding-top: 0.88rem !important;
+}
+
+.downOrder {
+    position: relative;
+}
+
+    .downOrder .sumcount {
+        position: absolute;
+        min-width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 0.12rem;
+        top: 0.02rem;
+        left: 44%;
+        background-color: #FF6F28;
+        line-height: 0.2rem;
+        font-size: 0.16rem;
+        display: none;
+    }
+
+.mui-control-item {
+    position: relative;
+}
+
+    .mui-control-item .itemcount {
+        position: absolute;
+        min-width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 0.2rem;
+        top: 0.1rem;
+        right: 0.1rem;
+        background-color: red;
+        line-height: 0.2rem;
+        font-size: 0.14rem;
+        color: white;
+        display: none;
+    }
+
+.paylayer .layui-m-layercont i {
+    background-color: #4cd964 !important;
+}
+
+.paylayer .layui-m-layercont p {
+    color: #4cd964 !important;
+}
+
+.py_product {
+    height: calc(100% - 0) !important;
+    overflow-y: hidden;
+}
+
+/*.py_cemian {
+    height: calc(100vh - 1rem) !important;
+}*/
+
+
+
+.btn-active {
+    background-color: #FF6F28 !important;
+    color: #FFFFFF !important;
+}
+.btn-all {
+   
+    background-color: #c9c9d2 ;
+}
+.mui-table-view:after{
+     background-color: transparent;
+}
+.selectSpecSumit{
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    height: .98rem;
+    background: #FFFFFF;
+    border-top: .01rem solid #E7E7E7;
+    align-items: baseline;
+}
+.total{
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    height: .98rem;
+    align-items: baseline;
+    color: #FF6F28;
+}
+.total i{
+    font-size: .26rem;
+    margin-left: .47rem;
+    
+}
+.total .price{
+    font-size: .34rem;
+    margin-left: .12rem;
+}
+.selectBtn{
+    width: 2.1rem;
+    height: .98rem;
+    background: #FF6F28;
+    text-align: center;
+    line-height: .98rem;
+    font-size: .34rem;
+    color: #FFFFFF;
+}
+/*新增覆盖mui框架样式*/
+.mui-segmented-control{
+    font-size: .28rem;
+    background-color: #F8F8F8;
+}
+.mui-segmented-control.mui-segmented-control-inverted.mui-segmented-control-vertical .mui-control-item, .mui-segmented-control.mui-segmented-control-inverted.mui-segmented-control-vertical .mui-control-item.mui-active{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: .01rem solid #E7E7E7;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+    color: #333;
+    border-left: .04rem solid #FF6F28;
+}
+.mui-col-xs-3::-webkit-scrollbar {
+    display: none;
+}
+
+
+.mui-table-view{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .3rem;
+}
+.mui-table-view-cell{
+    padding: 0;
+    margin-bottom: .3rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+}
+.mui-media-body{
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+}
+.mui-ellipsis{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: .2rem;
+}
+.layui-m-layershade{
+    background-color: rgba(0,0,0,.3) !important;
+}
+
+
+.refresh {
+    width: .4rem;
+    height: .4rem;
+    position: fixed;
+    z-index: 99999;
+    /* bottom: 3rem; */
+    right: .4rem;
+    top: 0.22rem;
+}
+
+.refresh img {
+    width: 100%;
+    height: 100%;
+}

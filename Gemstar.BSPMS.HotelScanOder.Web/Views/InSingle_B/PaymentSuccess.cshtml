@@ -1,0 +1,98 @@
+﻿@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css{
+    <style>
+        .paymentSuccess {
+            height: 100%;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .paymentSuccess i {
+            font-size: 0.5rem;
+            color: #00bb00;
+        }
+
+        .paymentSuccess span {
+            font-size: 0.2rem;
+            line-height: 0.2rem;
+        }
+
+        .paymentSuccess div {
+            font-size: 0.2rem;
+            line-height: 0.5rem;
+        }
+        .mui-bar-nav {
+            height: 0.48rem;
+            background-color: #FF6F28;
+        }
+
+        .mui-bar-nav .mui-icon-left-nav {
+            margin: 0;
+            padding: 0;
+            height: 0.48rem;
+            width: 1rem;
+            line-height: 0.88rem;
+        }
+
+        .mui-bar-nav .mui-title {
+            height: 0.48rem;
+            line-height: 0.48rem;
+            font-size: .34rem;
+            color: #FFFFFF;
+        }
+
+    </style>
+}
+
+@{
+
+    @*<div class="paymentSuccess">
+            <i class="fa fa-check-circle" aria-hidden="true"></i><br />
+            <span>支付成功</span><br />
+            <div id="countDown">5秒 查看订单</div>
+            <button type="button" class="mui-btn mui-btn-success mui-btn-block" onclick="returnHome()">查看订单</button>
+        </div>*@
+    <input id="refeId" type="hidden" value="@ViewBag.RefeId" />
+    <input id="tabid" type="hidden" value="@ViewBag.Tabid" />
+    <div class="paymentSuccess">
+        <i class="fa fa-check-circle" aria-hidden="true"></i><br />
+        <span>支付成功</span><br />
+        <div id="countDown">5秒 返回首页</div>
+        <button type="button" class="mui-btn mui-btn-success mui-btn-block" onclick="returnHome()">返回首页</button>
+    </div>
+
+}
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+       var time = setInterval(showTime, 1000);
+        var second = 5;
+        function showTime() {
+            if (second == 0) {
+                clearInterval(time);
+                location.href = '@Url.Action("Index", "InSingle_B")?RefeId=' + $("#refeId").val() + '&Tabid=' + $("#tabid").val();
+                //Tabid=000388035&RefeId=000388001
+            }
+            else {
+                $("#countDown").text(second + '秒 返回首页');
+                second--;
+            }
+        }
+
+        function returnHome()
+        {
+            location.href = '@Url.Action("Index", "InSingle_B")?RefeId=' + $("#refeId").val() + ' & Tabid=' + $("#tabid").val();
+
+        }
+        WeixinJSBridge.call('hideToolbar');
+    </script>
+}  

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EDEE5937-78A3-4F0A-83AC-580329842864}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gemstar.BSPMS.HotelScanOrder.Common</RootNamespace>
+    <AssemblyName>Gemstar.BSPMS.HotelScanOrder.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ConnStrHelper.cs" />
+    <Compile Include="Common\CryptHelper.cs" />
+    <Compile Include="Common\EntityStatus.cs" />
+    <Compile Include="Common\HttpHelper.cs" />
+    <Compile Include="Common\JsonExceptionAttribute.cs" />
+    <Compile Include="Common\JsonResultData.cs" />
+    <Compile Include="Common\LogLevel.cs" />
+    <Compile Include="Common\PasswordHelper.cs" />
+    <Compile Include="Common\PostData.cs" />
+    <Compile Include="Common\PostDataResult.cs" />
+    <Compile Include="Common\PostType.cs" />
+    <Compile Include="Common\SettingHelper.cs" />
+    <Compile Include="Common\SettingInfo.cs" />
+    <Compile Include="EntityProcedures\UpQueryHotelInfoByIdResult.cs" />
+    <Compile Include="ICurrentInfo.cs" />
+    <Compile Include="IReciveDataHandler.cs" />
+    <Compile Include="ISettingProvider.cs" />
+    <Compile Include="Master\HotelSMResultModel.cs" />
+    <Compile Include="PosEnum\BalanceType.cs" />
+    <Compile Include="PosEnum\PaymentDesc.cs" />
+    <Compile Include="PosEnum\PosPostStatus.cs" />
+    <Compile Include="PosEnum\PosbillDetailStatus.cs" />
+    <Compile Include="PosEnum\PosTabStatusEnum.cs" />
+    <Compile Include="PosEnum\WxPaytype.cs" />
+    <Compile Include="Pos\Action\ActionPostModel.cs" />
+    <Compile Include="Pos\Action\ActionResultModel.cs" />
+    <Compile Include="Pos\BasePostModel.cs" />
+    <Compile Include="Pos\Bill\BillCmpPostModel.cs" />
+    <Compile Include="Pos\Bill\BillCmpResultModel.cs" />
+    <Compile Include="Pos\Bill\BillDetailPostModel.cs" />
+    <Compile Include="Pos\Bill\BillDetailResultModel.cs" />
+    <Compile Include="Pos\Bill\GetBillDetailActionPostModel.cs" />
+    <Compile Include="Pos\Bill\GetBillDetailActionResultModel.cs" />
+    <Compile Include="Pos\Bill\InsBillDetailActionPostData.cs" />
+    <Compile Include="Pos\Bill\InsBillDetailActionResult.cs" />
+    <Compile Include="Pos\Bill\InsBillDetailPostModel.cs" />
+    <Compile Include="Pos\Bill\InsBillDetailResultModel.cs" />
+    <Compile Include="Pos\Bill\InsBillPostDataModel.cs" />
+    <Compile Include="Pos\Bill\InsBillResultModel.cs" />
+    <Compile Include="Pos\HotelInterfacePostModel.cs" />
+    <Compile Include="Pos\Item\ItemPostModel.cs" />
+    <Compile Include="Pos\Item\ItemResultModel.cs" />
+    <Compile Include="Pos\Item\SysInfoPostModel.cs" />
+    <Compile Include="Pos\Item\SysInfoResultModel.cs" />
+    <Compile Include="Pos\Login\LoginCheckResult.cs" />
+    <Compile Include="Pos\Login\LoginPostModel.cs" />
+    <Compile Include="Pos\Login\LoginResultModel.cs" />
+    <Compile Include="Pos\Logs\OperLogPostModel.cs" />
+    <Compile Include="Pos\PayBill\PayBillAmountPostModel.cs" />
+    <Compile Include="Pos\PayBill\PayBillAmountResultModel.cs" />
+    <Compile Include="Pos\PayBill\PayBillPostModel.cs" />
+    <Compile Include="Pos\PayBill\PayBillResultModel.cs" />
+    <Compile Include="Pos\PayBill\PayRemak.cs" />
+    <Compile Include="Pos\PayBill\PayWxBarcodeResult.cs" />
+    <Compile Include="Pos\PayMethod\GetPayMethodPostModel.cs" />
+    <Compile Include="Pos\PayMethod\GetPayMethodResultModel.cs" />
+    <Compile Include="Pos\Report\ReportSellDetailListPostModel.cs" />
+    <Compile Include="Pos\Report\ReportBillDetailListPostModel.cs" />
+    <Compile Include="Pos\Report\ReportSellDetailListResultModel.cs" />
+    <Compile Include="Pos\Report\ReportInBalanceListPostModel.cs" />
+    <Compile Include="Pos\Report\ReportBillListPostModel.cs" />
+    <Compile Include="Pos\Report\ReportBillListResultModel.cs" />
+    <Compile Include="Pos\Report\ReportInBalanceListResultModel.cs" />
+    <Compile Include="Pos\Request\RequestPostModel.cs" />
+    <Compile Include="Pos\Request\RequestResultModel.cs" />
+    <Compile Include="Pos\Tab\OpenTabView.cs" />
+    <Compile Include="Pos\Tab\RefePostModel.cs" />
+    <Compile Include="Pos\Tab\RefeResultModel.cs" />
+    <Compile Include="Pos\Tab\TabPostModel.cs" />
+    <Compile Include="Pos\Report\ReportBillDetailListResultModel.cs" />
+    <Compile Include="Pos\Tab\TabResultModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="SPAEnum\SPAPostStatus.cs" />
+    <Compile Include="SPA\Store\LoginPostModel.cs" />
+    <Compile Include="SPA\Store\LoginResultModel.cs" />
+    <Compile Include="SPA\Store\StoreOrderPostModel.cs" />
+    <Compile Include="SPA\Store\StoreOrderResultModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

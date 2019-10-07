@@ -1,0 +1,446 @@
+﻿html {
+    background-color: #eee;
+    touch-action: none
+}
+
+.getnum {
+    background-color: #eee
+}
+
+    .getnum .head_div {
+        position: fixed;
+        top: 0;
+        left: 0
+    }
+
+    .getnum .head {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        height: .6rem;
+        width: 6.4rem;
+        background-color: #ff6a00;
+        color: #fff
+    }
+
+        .getnum .head .fanhui {
+            width: .4rem;
+            height: .4rem;
+            padding: .1rem
+        }
+
+        .getnum .head .title {
+            margin-left: 2.4rem;
+            font-size: .3rem
+        }
+
+    .getnum .tabchange {
+        width: 6.4rem;
+        overflow: hidden;
+        height: .7rem;
+        background-color: #fff;
+        display: flex;
+        align-items: center
+    }
+
+        .getnum .tabchange .tabul {
+            width: 6.4rem;
+            overflow-x: scroll;
+            display: -webkit-box;
+            height: .4rem;
+            padding: .1rem 0;
+            -webkit-overflow-scrolling: touch
+        }
+
+    .getnum .tabli ::-webkit-scrollbar {
+        display: none
+    }
+
+    .getnum .tabli {
+        min-width: 1.58rem;
+        height: .4rem;
+        line-height: .4rem;
+        text-align: center;
+        border-right: 1px solid #c8c3c3
+    }
+
+        .getnum .tabli:last-child {
+            border-right: none
+        }
+
+        .getnum .tabli .taba {
+            height: .4rem;
+            line-height: .4rem;
+            text-align: center;
+            display: inline-flex;
+            font-size: .28rem;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center
+        }
+
+        .getnum .tabli .title {
+            color: #343333
+        }
+
+        .getnum .tabli .sl_bg {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: .1rem;
+            min-width: .28rem;
+            height: .28rem;
+            color: #fff;
+            background-color: grey;
+            border-radius: .2rem
+        }
+
+        .getnum .tabli .shuliang {
+            font-size: .2rem
+        }
+
+        .getnum .tabli.click .taba {
+            border-bottom: 2px solid #fe3b3b
+        }
+
+        .getnum .tabli.click .title {
+            color: #fe3b3b
+        }
+
+        .getnum .tabli.click .sl_bg {
+            background-color: #fe3b3b
+        }
+
+    .getnum .tab_content {
+        margin-top: 1.2rem;
+        height: calc(100% - .6rem);
+        overflow-y: scroll
+    }
+
+        .getnum .tab_content .tabc_ul {
+            padding: .2rem .2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-flow: row wrap
+        }
+
+    .getnum .tabc_ul .tabc_li {
+        float: left;
+        padding: .3rem;
+        width: calc(1rem);
+        height: calc(1rem);
+        margin-bottom: .5rem;
+        border-radius: .2rem;
+        border: 2px solid #111
+    }
+
+    .getnum .tabc_li .bianhao {
+        width: 1.2rem;
+        height: 1rem;
+        background-color: #fff1e9;
+        color: #ff6612;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .36rem
+    }
+
+    .getnum .tabc_li .renshu {
+        width: 1.5rem;
+        height: 1rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .24rem
+    }
+
+    .getnum .tabc_li .jiaohao {
+        width: 1.16rem;
+        height: 1rem;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .24rem
+    }
+
+    .getnum .tabc_li .jiucan {
+        width: 1.17rem;
+        height: 1rem;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .24rem
+    }
+
+    .getnum .tabc_li .guohao {
+        width: 1.17rem;
+        height: 1rem;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .24rem
+    }
+
+    .getnum .tabc_li .shanchu {
+        width: 1.17rem;
+        height: 1rem;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .24rem
+    }
+
+    .getnum .tabc_li .chehui {
+        width: 1.17rem;
+        height: 1rem;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: .24rem
+    }
+
+    .getnum .tabc_li img {
+        width: .6rem;
+        height: .6rem
+    }
+
+    .getnum .tabc_li .shuoming {
+        color: #414040;
+        font-size: .2rem;
+        padding-top: .04rem
+    }
+
+    .getnum .tab_div.show {
+        display: block
+    }
+
+    .getnum .tab_div.hide {
+        display: none
+    }
+
+    .getnum .tab_div {
+        height: calc(100% - .6rem);
+        overflow-y: scroll
+    }
+
+    .getnum .quhao_button {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: .8rem;
+        line-height: .8rem;
+        text-align: center;
+        background-color: #ff6f28;
+        font-size: .4rem;
+        color: #fff
+    }
+
+    .getnum .gengduo_button {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: .8rem;
+        line-height: .8rem;
+        text-align: center;
+        background-color: #ff7b2c;
+        font-size: .4rem;
+        color: #fff
+    }
+
+.qhlayer .quhao_div {
+    width: 6.4rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center
+}
+
+.qhlayer .xinxi {
+    width: 6.4rem;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    padding: .2rem 0;
+    align-items: center
+}
+
+    .qhlayer .xinxi div {
+        width: 2.6rem;
+        border: 1px solid #eee;
+        border-radius: .4rem;
+        padding: .08rem .2rem;
+        line-height: .4rem;
+        font-size: .3rem
+    }
+
+    .qhlayer .xinxi .ren:empty:before {
+        content: attr(placeholder);
+        color: grey
+    }
+
+    .qhlayer .xinxi .dianhua:empty:before {
+        content: attr(placeholder);
+        color: grey
+    }
+
+.dianhua:focus:before, .ren:focus:before {
+    content: none
+}
+
+.qhlayer .shuzi {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    text-align: center
+}
+
+    .qhlayer .shuzi span {
+        display: inline-block;
+        width: 1.4rem;
+        height: .8rem;
+        line-height: .8rem;
+        border: 1px solid #eee;
+        margin-top: .2rem;
+        font-size: .3rem;
+        border-radius: .1rem
+    }
+
+    .qhlayer .shuzi .shanchu {
+        color: #ff6f28
+    }
+
+    .qhlayer .shuzi .qingkong {
+        color: #ff6f28
+    }
+
+.qhlayer .quhao {
+    display: inline-flex;
+    width: 6.2rem;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: .4rem;
+    background-color: #ff6f28;
+    color: #fff;
+    justify-content: center;
+    margin: .2rem 0;
+    border-radius: .05rem;
+   
+    cursor:pointer;
+}
+
+.qhlayer .xinxi div.select {
+    border-color: #ff6f28;
+    background-color: #fff1e9
+}
+
+.qhlayer .shuzi span:active {
+    background: #ff6f28;
+    color: #fff
+}
+
+.getsuccess {
+    padding: 0;
+    border: none
+}
+
+    .getsuccess .tishi {
+        width: 5rem;
+        height: 2.5rem;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center
+    }
+
+    .getsuccess .title {
+        font-size: .36rem;
+        height: .5rem
+    }
+
+    .getsuccess .no {
+        font-size: .4rem;
+        color: #fe4848
+    }
+
+.tabc_ul span {
+    display: inline-block;
+    width: 100%
+}
+
+.staus-all {
+    background-color: #fea4a1
+}
+
+.staus-empty {
+    background-color: #e4e4e4
+}
+
+.staus-beAlone {
+    background-color: #7fdfff
+}
+
+.staus-repair {
+    background-color: #5efca9
+}
+
+.staus-sit {
+    background-color: #fff46d
+}
+
+.staus-reserve {
+    background-color: #b3aefe
+}
+
+.staus-intimidate {
+    background-color: #89f272
+}
+
+.staus-clean {
+    background-color: #feb466
+}
+
+.staus-operation {
+    background-color: #feabec
+}
+
+.openTab {
+    background-color: #fff1e9
+}
+
+    .openTab li {
+        width: 100%;
+        height: 1rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .36rem
+    }
+
+        .openTab li span:nth-child(1) {
+            width: 32%
+        }
+
+        .openTab li span:nth-child(2) {
+            width: 68%
+        }
+
+        .openTab li input {
+            text-align: left;
+            border: 1px solid grey;
+            display: inline-block;
+            height: 30px;
+            color: #000;
+            border-radius: 3px;
+            width: 70%
+        }

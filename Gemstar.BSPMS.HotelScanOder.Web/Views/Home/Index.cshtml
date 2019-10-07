@@ -1,0 +1,53 @@
+﻿@model Gemstar.BSPMS.HotelScanOrder.Common.Pos.Login.LoginPostModel
+@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css{
+    <link href="~/Scripts/ScanOrder/mui/css/mui.picker.all.css" rel="stylesheet" />
+}
+<div class="order_login">
+    <div class="order_div">
+        <p class="title"></p>
+        @using (Html.BeginForm())
+        {
+
+            <p class="shuru"> <span class="dengl_biaoti code"></span>@Html.TextBoxFor(u => u.Hid, new { @placeholder = "酒店代码" }) </p>
+
+            <p class="shuru"> <span class="dengl_biaoti user"></span>@Html.TextBoxFor(u => u.Username, new { @placeholder = "用户名" }) </p>
+
+            <p class="shuru"> <span class="dengl_biaoti password"></span>@Html.PasswordFor(u => u.Password, new { @placeholder = "密码" })   </p>
+
+            @*<p class="shuru yanzm none">
+                    <span class="dengl_biaoti">验证码:</span>@Html.TextBoxFor(u => u.CheckCode, new { @class = "checkcode" })
+                    <span> <img src="@Url.Action("LoadCheckCode")" class="ccodeimg" id="captchaImage" /></span>
+                </p>*@
+            <p class="dengl"> <input value="登录" type="submit" class="denglu" id="login" /> </p>
+
+        }
+    </div>
+
+    <!--<img class="login_bg" src="~/images/login_bg.png" />-->
+    <div class="login_bg"></div>
+</div>
+@section Scripts{
+
+
+    <script src="~/Scripts/ScanOrder/mui/js/mui.picker.all.js"></script>
+    <script src="~/Scripts/ScanOrder/jstorage.js"></script>
+    <script src="~/Scripts/ScanOrder/jquery.cookie.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Login/login.js"></script>
+    <script src="~/Scripts/queue.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('body').keydown(function () {  //回车键登录
+                if (event.keyCode == 13)//按Enter键的键值为13
+                    $('#login').click();
+            })
+        });
+
+
+    </script>
+}

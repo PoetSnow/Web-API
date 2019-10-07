@@ -1,0 +1,114 @@
+/* CSS Document */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+.layout {
+    overflow: auto;
+    height: 100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Microsoft YaHei",sans-serif;
+    font-size: 625%
+}
+
+/* 清除浮动 */
+.clear:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clear {
+    *zoom: 1;
+}
+
+.f_left {
+    float: left;
+}
+
+.f_right {
+    float: right;
+}
+
+.box {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.firstWrap {
+    max-width: 6.4rem;
+    min-width: 3rem;
+    margin: 0 auto;
+}
+
+.centermrgin {
+    margin-top: 0.75rem;
+}
+
+.loadwin {
+    padding: 0;
+    border: none;
+    border-radius: 0.12rem !important;
+    width: 80%
+}
+
+
+.loadwin .btn {
+    text-align: right;
+    padding: 12px 0px 12px;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    border-color: #1E9FFF;
+    background-color: #f55858;
+    width: 50%;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    left: 0;
+    bottom: 0;
+    clear: both;
+    text-align: center;
+    border-bottom-left-radius: 0.1rem;
+    border-bottom-right-radius: 0.1rem;
+}
+
+.loadwin .titlemsg {
+    color: #fff;
+    overflow: hidden;
+    text-align: center;
+    background-color: #969090;
+    border-radius: 0.1rem 0.1rem 0 0;
+    height: .6rem;
+    text-align: center;
+    line-height: .6rem;
+}
+
+.loadwin .content {
+    position: relative;
+    padding: 20px;
+    line-height: 24px;
+    word-break: break-all;
+    overflow: hidden;
+    font-size: 14px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

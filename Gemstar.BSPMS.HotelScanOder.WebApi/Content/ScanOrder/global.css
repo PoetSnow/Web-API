@@ -1,0 +1,42 @@
+/* CSS Document */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+.layout {
+    overflow: auto;
+    height: 100%;
+}
+
+body,h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, pre, code,form, fieldset, legend, input, button,textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+html {font-family:"Microsoft YaHei",sans-serif;font-size:625%}
+
+/* 清除浮动 */
+ .clear:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility:hidden;
+}
+ .clear {
+  *zoom: 1;
+}
+ .f_left{
+  float:left;
+}
+.f_right{
+  float:right;
+}
+.box{-webkit-box-sizing:border-box;box-sizing:border-box;}
+.firstWrap{max-width:6.4rem;min-width:3rem;margin: 0 auto;} 
+.centermrgin{margin-top:0.75rem;}
+

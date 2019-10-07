@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gemstar.BSPMS.HotelScanOrder.Common", "Gemstar.BSPMS.HotelScanOrder.Common\Gemstar.BSPMS.HotelScanOrder.Common.csproj", "{EDEE5937-78A3-4F0A-83AC-580329842864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gemstar.BSPMS.HotelScanOrder.Services.EF", "Gemstar.BSPMS.HotelScanOder.Services.EF\Gemstar.BSPMS.HotelScanOrder.Services.EF.csproj", "{DC30D1E6-6691-405B-B8A3-78681718B1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gemstar.BSPMS.HotelScanOrder.Web", "Gemstar.BSPMS.HotelScanOder.Web\Gemstar.BSPMS.HotelScanOrder.Web.csproj", "{DE225263-6912-4E54-ACD6-47B880BF0047}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gemstar.BSPMS.HotelScanOrder.WebApi", "Gemstar.BSPMS.HotelScanOder.WebApi\Gemstar.BSPMS.HotelScanOrder.WebApi.csproj", "{AC1D50FC-A425-457D-9134-813A2666FB41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDEE5937-78A3-4F0A-83AC-580329842864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEE5937-78A3-4F0A-83AC-580329842864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEE5937-78A3-4F0A-83AC-580329842864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEE5937-78A3-4F0A-83AC-580329842864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC30D1E6-6691-405B-B8A3-78681718B1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC30D1E6-6691-405B-B8A3-78681718B1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC30D1E6-6691-405B-B8A3-78681718B1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC30D1E6-6691-405B-B8A3-78681718B1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE225263-6912-4E54-ACD6-47B880BF0047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE225263-6912-4E54-ACD6-47B880BF0047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE225263-6912-4E54-ACD6-47B880BF0047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE225263-6912-4E54-ACD6-47B880BF0047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC1D50FC-A425-457D-9134-813A2666FB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC1D50FC-A425-457D-9134-813A2666FB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC1D50FC-A425-457D-9134-813A2666FB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC1D50FC-A425-457D-9134-813A2666FB41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CCBD3E1-58B5-4BD0-96B4-2AB53D53F2D0}
+	EndGlobalSection
+EndGlobal

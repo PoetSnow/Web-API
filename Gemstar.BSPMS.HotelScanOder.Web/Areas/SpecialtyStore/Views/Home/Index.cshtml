@@ -1,0 +1,181 @@
+﻿@{
+    ViewBag.Title = "";
+}
+@section Css{
+
+    <link href="~/Scripts/mobileSelect.js/css/mobileSelect.css" rel="stylesheet" />
+    <style>
+
+        body {
+            background-color: #fff;
+            touch-action: none;
+            height: 100%;
+            
+        }
+
+        .store {
+            width: 6.4rem;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .store {
+            background-color: #fff;
+        }
+
+            .store .head_div {
+
+                position: fixed;
+                top: 0;
+                
+                margin: 0 auto;
+            }
+
+            .store .head {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                height: .9rem;
+                width: 6.4rem;
+                background-color: #ff6a00;
+                color: #fff;
+                position:relative;
+            }
+            .store .head a{ position:absolute;
+                    width: .6rem;
+                    height: .6rem;
+                    left:0;
+                   
+                    display:block; }
+                .store .head .fanhui {
+                    width: .4rem;
+                    height: .4rem;
+                    padding: .1rem;
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    display:block;
+                }
+
+                .store .head .title {                             
+                    font-size: .3rem;                   
+                    text-align:left;
+                }
+
+                .store .head .yuyan {
+                    height:0.6rem;  
+                    min-width:1rem;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    position:absolute;
+                    right:0;
+                }
+
+                    .store .head .yuyan span {
+                        display: inline-flex;
+                         height:0.6rem; 
+                        flex-flow:row nowrap;
+                        align-items:center;
+                        justify-content:center;
+                        max-width: 2rem;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        text-align: right;
+
+                    }
+
+            .store .yuyan .xia, .store .yuyan .shang {
+                width: 0.3rem;
+                height: .3rem;
+                padding: 0 0.1rem;
+                transition: all 0.3s ease-out; 
+            }          
+            .store .center {
+                width: 6.4rem;
+                height: calc(100% - 0.6rem);
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
+
+                .store .center .title {
+                    width: 4.2rem;
+                    font-size: 0.32rem;
+                    text-align: left;
+                    margin-bottom: .3rem;
+                    
+                }
+
+                .store .center .shuzi {
+                    width: 3.8rem;
+                    height: 1rem;
+                    margin-bottom: .9rem;
+                    padding: 0 0.2rem;
+                    border-radius: 0.12rem;
+                    border: 1px solid #a2a2a2;
+                    font-size: .3rem;
+                    color:#333;
+                }
+
+                .store .center .queren {
+                    width: 4.2rem;
+                    height: 0.9rem;
+                    text-align: center;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    background-color: #ff6f28;
+                    border-radius: 0.12rem;
+                    font-size: .34rem;
+                }
+
+
+
+
+
+    </style>
+}
+
+<div class="store">
+    <div class="head_div">
+        <div class="head">
+            <a href="http://192.168.1.160:60333/SpecialtyStore/Home?id=@(new Random().Next(1,2222222))"><img class="fanhui" src="~/images/back.png" /></a>
+            <p class="title">@Resources.GlobalResource.Buy</p>
+            <div class="yuyan">
+                <span id="trigger1"> @Resources.GlobalResource.CurLanguage</span>
+                <img class="xia" src="~/images/xia.png" />              
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+        <div class="title">@Resources.GlobalResource.Money：</div>
+        <input type="number" class="shuzi" placeholder="@Resources.GlobalResource.AmountEntered" />
+        <div class="queren">  <span @*style="letter-spacing:0.21rem; padding-left: 0.21rem;"*@>@Resources.GlobalResource.Affirm</span>  </div>
+    </div>
+
+    <div class="foot">
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/mobileSelect.js/js/mobileSelect.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/ScanOrder/juicer-min.js"></script>
+    <script>     
+        $(function () {
+
+        });
+
+
+    </script>
+}
+

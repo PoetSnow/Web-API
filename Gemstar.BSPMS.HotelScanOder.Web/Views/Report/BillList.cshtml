@@ -1,0 +1,161 @@
+﻿@model Gemstar.BSPMS.HotelScanOrder.Common.Pos.Report.ReportBillListPostModel
+
+@{
+    ViewBag.Title = "收银明细";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Request["As_StartDate"] != null)
+    {
+        Model.As_StartDate = Request["As_StartDate"];
+        Model.As_EndDate = Request["As_StartDate"];
+    }
+
+    if (Request["PayModeId"] != null)
+    {
+        Model.PayModeId = Request["PayModeId"];
+    }
+}
+
+@section Css{
+    <link href="~/Content/queue.css" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <script type="application/javascript" src="~/Scripts/fastclick.js"></script>
+    <link href="~/Content/Report.css?rnd=@(new Random().Next(1, 222222))" rel="stylesheet" />
+}
+@*查询模块*@
+
+<div class="query_div">
+    <div class="drop">
+
+    </div>
+    <div class="mask">
+
+    </div>
+    <ul>
+        <li>
+            @Html.DropDownList("As_FindType", new List<SelectListItem> { new SelectListItem { Text = "按发生营业日", Value = "1", Selected = true }, new SelectListItem { Text = "按买单营业日", Value = "2" } })
+        </li>
+        <li>
+            <input type="date" id="As_StartDate" name="As_StartDate" value="@Model.As_StartDate" />
+        </li>
+    </ul>
+</div>
+<div class="reportTitle_div">
+    营业日期：<label id="labBsDate">@Model.As_StartDate</label> @*(未清机)*@
+</div>
+
+<ul class="mui-table-view">
+    <li class="mui-table-view-cell">
+        <div>
+            <div class="tabno">
+                房台号
+            </div>
+            <div class="notabno">
+                开台时间
+            </div>
+            <div class="notabno">
+                营业额
+            </div>
+        </div>
+    </li>
+    @*{
+            foreach (var l in list)
+            {
+                <li class="mui-table-view-cell" data-src="@Url.Action("GetBillListData", "Report")" onclick="OpenDetailList(this)">
+                    <div>
+                        <div class="tabno">
+
+                        </div>
+                        <div class="notabno">
+                            @l.OpenRecord.ToString("HH:mm")
+                        </div>
+                        <div class="notabno">
+                            @l.Amount.ToString("0.00")
+                        </div>
+                    </div>
+                </li>
+            }
+        }*@
+</ul>
+
+@section Scripts{
+    <script>
+        var url = "@Url.Action("GetBillListData", "Report")";
+
+        var BillList = {
+            GetBillList: function (model) {
+                var parms = {
+                    url: url,
+                    type: 'post',
+                    dataType: "json",
+                    data: model
+                };
+
+                JQajaxPromiseForLayer(parms).then(function (data) {
+                    if (data.length > 0) {
+                    var liData = "";
+
+                    $.each(data, function (index, value) {
+                        liData += `<li class="mui-table-view-cell" data-src="` + "@Url.Action("BillDetailList", "Report")?billno="+ value.BillNo +`" onclick="OpenDetailList(this)">
+                                    <div>
+                                        <div class="tabno">
+                                            `+ value.TabName +`
+                                        </div>
+                                        <div class="notabno">
+                                            `+ GetDateFormat(value.OpenRecord)+`
+                                        </div>
+                                        <div class="notabno">
+                                            `+ parseFloat(value.Amount).toFixed(2) +`
+                                        </div>
+                                    </div>
+                                </li>`;
+                    })
+                    $("#labBsDate").text(model.As_StartDate);
+                    $(".mui-table-view").children(":not(:first)").remove();
+                        $(".mui-table-view").append(liData);
+                    }
+                    else { mui.toast('暂未查询到数据'); }
+                })
+                .catch(function (error) {
+                    // layer.msg(error, 1);
+                })
+            }
+        }
+
+        $(function () {
+            var model = {
+                Hid: "@Model.Hid",
+                Module: "@Model.Module",
+                As_FindType: $("#As_FindType").val(),
+                As_StartDate: $("#As_StartDate").val(),
+                As_EndDate: $("#As_StartDate").val(),
+                Refeid: "@Model.Refeid",
+                PayModeId:"@Model.PayModeId"
+            }
+
+            BillList.GetBillList(model);
+
+            $("#As_FindType,#As_StartDate").change(function () {
+                var model = {
+                Hid: "@Model.Hid",
+                Module: "@Model.Module",
+                As_FindType: $("#As_FindType").val(),
+                As_StartDate: $("#As_StartDate").val(),
+                As_EndDate: $("#As_StartDate").val(),
+                Refeid: "@Model.Refeid",
+                PayModeId:"@Model.PayModeId"
+            }
+
+                BillList.GetBillList(model);
+            })
+        })
+
+        function OpenDetailList(obj) {
+            var href = $(obj).attr("data-src");
+            window.location.href = href;
+        }
+
+        function GetDateFormat(str) {
+            return new Date(parseInt(str.substr(6, 13))).getHours() + ":" + ((new Date(parseInt(str.substr(6, 13))).getMinutes()) < 9 ? "0"+(new Date(parseInt(str.substr(6, 13))).getMinutes()): (new Date(parseInt(str.substr(6, 13))).getMinutes()));
+        }
+    </script>
+}

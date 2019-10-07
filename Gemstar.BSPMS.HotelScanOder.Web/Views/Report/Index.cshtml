@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "报表中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Css{
+    <link href="~/Content/queue.css" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <script type="application/javascript" src="~/Scripts/fastclick.js"></script>
+    <link href="~/Content/Report.css?rnd=@(new Random().Next(1, 222222))" rel="stylesheet" />
+    <style>
+        .mui-icon-left-nav {
+            display: none;
+        }
+        .mui-content {
+            background-color: #FFF;
+        }
+
+        .mui-grid-view.mui-grid-9 {
+            background-color: #FFF !important;
+        }
+
+        .mui-bar-nav {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .mui-bar {
+            background-color: #FF6F28;
+            -webkit-box-shadow: none;
+        }
+
+        .mui-bar-tab .mui-tab-item {
+            color: #FFF;
+        }
+
+            .mui-bar-tab .mui-tab-item .mui-icon {
+                top: -5px;
+            }
+
+            .mui-bar-tab .mui-tab-item.mui-active {
+                color: #FFF;
+            }
+
+        .mui-card {
+            margin: 15px;
+            border-radius: 10px;
+            margin-top: -2rem;
+        }
+
+        .mui-card-footer, .mui-card-header {
+            text-align: center;
+            display: block;
+        }
+
+        .mui-card-content {
+            line-height: 0.5rem;
+        }
+
+        .mui-card-footer {
+            text-align: right;
+        }
+        /******************************************/
+        /* 下半圆 */
+        .semi-circle2 {
+            width: 100%;
+            margin-top: -1.8rem;
+            height: 4rem;
+            background-color: #FF6F28;
+            border-radius: 0 0 100% 100%; /* 左上、右上、右下、左下 */
+        }
+    </style>
+}
+@*<div class="semi-circle2">&nbsp;</div>
+    <div class="mui-card">
+        <div class="mui-card-header">中餐收银ˇ</div>
+        <div class="mui-card-content">
+            <div class="mui-card-content-inner">
+                中餐收银收益<br />
+                <h3 style="font-size:24px;">3564151.123</h3>
+            </div>
+        </div>
+        <div class="mui-card-footer">7月12日&nbsp;&nbsp;星期三</div>
+    </div>*@
+<ul class="mui-table-view mui-grid-view mui-grid-9">
+    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="@Url.Action("BillList", "Report")">
+            <span class="mui-icon"><img src="~/images/Pos/Report/收银明细.png" style="width:.5rem" /></span>
+            <div class="mui-media-body">收银明细</div>
+        </a>
+    </li>
+    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="@Url.Action("InBalanceList", "Report")">
+            <span class="mui-icon"><img src="~/images/Pos/Report/收入平衡.png" style="width:.5rem" /></span>
+            <div class="mui-media-body">收入平衡</div>
+        </a>
+    </li>
+    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <a href="@Url.Action("SellDetailList", "Report")">
+            <span class="mui-icon"><img src="~/images/Pos/Report/销售明细.png" style="width:.5rem" /></span>
+            <div class="mui-media-body">销售明细</div>
+        </a>
+    </li>
+</ul>
+
+@*<nav class="mui-bar mui-bar-tab">
+        <a class="mui-tab-item mui-active" href="javascript:;">
+            <span class="mui-icon mui-icon-bars"></span>
+            <span class="mui-tab-label">全部</span>
+        </a>
+        <a class="mui-tab-item" href="javascript:;">
+            <span class="mui-icon mui-icon-compose"></span>
+            <span class="mui-tab-label">收银</span>
+        </a>
+        <a class="mui-tab-item" href="javascript:;">
+            <span class="mui-icon mui-icon-map"></span>
+            <span class="mui-tab-label">销售</span>
+        </a>
+    </nav>
+*@

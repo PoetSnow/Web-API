@@ -1,0 +1,187 @@
+.pos-header {
+    width: 100%;
+    height: 5.6rem;
+    background: url(../../images/Pos/Report/bg.png) no-repeat center top;
+    background-size: 100% 3.08rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+.pos-header h2{
+    font-size: .34rem;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: .28rem;
+}
+.code{
+    width: 7rem;
+    height: 3.8rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    background: url(../../images/Pos/Report/code.png) no-repeat center;
+    background-size: 7rem 3.8rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .1rem .15rem;
+    margin-top: 1.08rem;
+}
+.code-title{
+    width: 6.7rem;
+    height: .87rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #707070;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 .35rem 0 .45rem;
+}
+.code-select{
+    flex: 1;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+}
+.code-select span{
+    font-size: .3rem;
+    color: #333333;
+    padding-right: .4rem;
+    background: url(../../images/Pos/Report/arrows-bottom.png) no-repeat right center;
+    background-size: .2rem .2rem;
+}
+.code-select-item{
+    position: absolute;
+    top: .4rem;
+    left: 0;
+    background: rgba(255,255,255,1);
+    box-shadow: 0 0.01rem 0.09rem 0.01rem rgba(226,225,225,1);
+    border-radius: .08rem;
+    display: none;
+}
+.code-select-item li{
+    padding: 0 .25rem;
+    height: .8rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: .26rem;
+    color: #333333;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.code-select-item li:last-child{
+    border-bottom: 0;
+}
+.code-title p{
+    font-size: .26rem;
+    color: #666666;
+}
+.code-name{
+    font-size: .3rem;
+    color: #333333;
+    text-align: center;
+    margin-top: .6rem;
+}
+.code-money{
+    font-size: .6rem;
+    color: #333333;
+    text-align: center;
+    margin-top: .25rem;
+}
+.tab-list{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:0  .64rem;
+    margin-top: .36rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tab-list li a{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tab-list li a img{
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-bottom: .2rem;
+}
+.tab-list li a span{
+    font-size: .26rem;
+    color: #333333;
+}
+
+.pos-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: .96rem;
+    background-color: #FF7634;
+}
+.pos-footer ul{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.pos-footer ul li{
+    flex: 1;
+    border-left: 1px solid #FF9664;
+}
+.pos-footer ul li:first-child{
+    border-left: 0;
+}
+.pos-footer ul li a{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.pos-footer ul li a img{
+    width: .48rem;
+    height: .48rem;
+}
+.pos-footer ul li a span{
+    font-size: .24rem;
+    color: #FFFFFF;
+}

@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "";
+}
+@section Css{
+
+    <link href="~/Scripts/mobileSelect.js/css/mobileSelect.css" rel="stylesheet" />
+    <style>
+
+        body {
+            background-color: #fff;
+            touch-action: none;
+            height: 100%;
+            overflow:hidden;
+        }
+
+        .login {
+            width: 6.4rem;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .login {
+            background-color: #fff;
+        }
+        .login .head_div {
+
+                position: fixed;
+                top: 0;
+                left:0;
+                z-index : 2000;
+                margin: 0 auto;
+            }
+            .login .head {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                height: .9rem;
+                width: 6.4rem;
+                background-color: #ff6a00;
+                color: #fff;
+                position:relative;
+            }
+            .login .head a{ position:absolute;
+                    width: .6rem;
+                    height: .6rem;
+                    left:0;
+                   
+                    display:block; }
+                .login .head .fanhui {
+                    width: .4rem;
+                    height: .4rem;
+                    padding: .1rem;
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    display:block;
+                }
+
+                .login .head .title {                             
+                    font-size: .3rem;                   
+                    text-align:left;
+                }
+
+                .login .head .yuyan {
+                    height:0.6rem;  
+                    min-width:1rem;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    position:absolute;
+                    right:0;
+                }
+
+                    .login .head .yuyan span {
+                        display: inline-flex;
+                         height:0.6rem; 
+                        flex-flow:row nowrap;
+                        align-items:center;
+                        justify-content:center;
+                        max-width: 2rem;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        text-align: right;
+
+                    }
+
+            .login .yuyan .xia, .store .yuyan .shang {
+                width: 0.3rem;
+                height: .3rem;
+                padding: 0 0.1rem;
+                transition: all 0.3s ease-out; 
+            }          
+            .login .center {
+                position:fixed;
+                top:0;
+                left:0;
+                width: 6.4rem;
+                height: calc(100% - 0.9rem);
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                z-index:1000;
+            }
+
+ .login .center form { display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center; }
+
+
+.login .bg { position:fixed; /*width:6.4rem; height:11.36rem;*/ width:100%; height:100%;  top: 0; left:0; right:0; bottom:0; z-index:0;  }
+.login .center .shuru { padding:0 0.63rem; width:5.14rem; height:1rem; display:flex; flex-flow:row nowrap; justify-content: center; align-items:center; }
+.login .center .shuru .tubiao { width:0.32rem; height:0.32rem; }
+.login .center .shuru .input { width:3.2rem;  padding: 0 0.3rem; font-size:0.3rem;  color:#333; }
+.login .center .fenge { width:5.14rem; height:1px; background:rgba(231,231,231,1);}
+.login .center .denlu { width: 4.2rem;height:0.9rem; margin-top:0.8rem;  display:flex; justify-content:center; align-items:center; background:rgba(255,111,40,1);border-radius:0.1rem; color:#fff; font-size:0.34rem; cursor:pointer; }
+
+</style>
+}
+ 
+<div class="login">
+    <div class="head_div">
+        <div class="head">
+            <a href="javascript:window.close();"><img class="fanhui" src="~/images/back.png" /></a>
+            <p class="title">@Resources.GlobalResource.Login</p>
+            <div class="yuyan">
+                <span id="trigger1"> @Resources.GlobalResource.CurLanguage</span>
+                <img class="xia" src="~/images/xia.png" />                
+            </div>
+        </div>
+    </div>
+    <div class="center">  
+        <form>
+        <div class="shuru">          
+            <img class="tubiao" src="~/images/user2x.png" />
+            <input type="text" class="input" placeholder="用户名" id="UserName" name="usercode" />
+        </div>
+        <div class="fenge"></div>
+        <div class="shuru">          
+            <img class="tubiao" src="~/images/pwd2x.png" />
+            <input type="password" class="input" placeholder="密码" id="Pwd" name="pwd" />
+        </div>
+        <div class="fenge"></div>
+        <span class="denlu" id="login" >@Resources.GlobalResource.Login</span>
+       </form>
+    </div>
+
+    <img class="bg" src="~/images/storelogin.png" />
+    <div class="foot">
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>     
+        $(function () {
+            $("#login").click(function (e) {
+               
+                var username = $("#UserName");
+                var pwd = $("#Pwd");
+
+                if (username.val().length ==0) {
+                    //提示
+                    layer.msg('请输入用户名');
+                    username.focus();
+                    return false;
+                }               
+                if (pwd.val().length ==0) {
+                    //提示
+                    layer.msg('请输入密码');
+                    pwd.focus();
+                    return false;
+                }
+
+                $.ajax({
+                    url: "@Url.Action("Index","Login")",
+                    type: "post",
+                    data: $('form').serialize(),
+                    datatype: "json",
+                    success: function (result) {
+                        if (result.Success) {
+
+                            layer.open({
+                                content: '登录成功'
+                                , skin: 'msg'
+                                , time: 2 //2秒后自动关闭
+                                , end: function () {
+                                    window.location.href = '@Url.Action("Index","Home")';
+                                }
+                            });
+                        }
+                        else {
+                            layer.msg(result.Data);                           
+                        }
+                    },
+                    error: function (error) {
+                        layer.msg(error.responseText);                       
+                    }
+                });
+            });
+        });
+
+    </script>
+}
+

@@ -1,0 +1,18 @@
+--------------------------
+2019/3/28 11:52:58 错误信息:未将对象引用设置到对象的实例。
+调用堆栈:   在 Gemstar.BSPMS.HotelScanOrder.Web.Models.CurrentInfo.LoadValues() 位置 D:\work\Pos\Gemstar.BSPMS.HotelScanOder.Web\Models\CurrentInfoSession.cs:行号 120
+--------------------------
+2019/3/28 11:54:39 错误信息:未将对象引用设置到对象的实例。
+调用堆栈:   在 Gemstar.BSPMS.HotelScanOrder.Web.Models.CurrentInfo.LoadValues() 位置 D:\work\Pos\Gemstar.BSPMS.HotelScanOder.Web\Models\CurrentInfo.cs:行号 120
+--------------------------
+2019/3/28 11:55:36 错误信息:未将对象引用设置到对象的实例。
+调用堆栈:   在 Gemstar.BSPMS.HotelScanOrder.Web.Models.CurrentInfo.LoadValues() 位置 D:\work\Pos\Gemstar.BSPMS.HotelScanOder.Web\Models\CurrentInfo.cs:行号 120
+--------------------------
+2019/3/28 11:56:00 错误信息:未将对象引用设置到对象的实例。
+调用堆栈:   在 Gemstar.BSPMS.HotelScanOrder.Web.Models.CurrentInfo.LoadValues() 位置 D:\work\Pos\Gemstar.BSPMS.HotelScanOder.Web\Models\CurrentInfo.cs:行号 120
+--------------------------
+2019/3/28 11:57:31 错误信息:未将对象引用设置到对象的实例。
+调用堆栈:   在 Gemstar.BSPMS.HotelScanOrder.Web.Models.CurrentInfo.LoadValues() 位置 D:\work\Pos\Gemstar.BSPMS.HotelScanOder.Web\Models\CurrentInfo.cs:行号 120
+--------------------------
+2019/3/28 15:38:20 错误信息:未将对象引用设置到对象的实例。
+调用堆栈:   在 Gemstar.BSPMS.HotelScanOrder.Web.Models.CurrentInfo.LoadValues() 位置 D:\work\Pos\Gemstar.BSPMS.HotelScanOder.Web\Models\CurrentInfo.cs:行号 120

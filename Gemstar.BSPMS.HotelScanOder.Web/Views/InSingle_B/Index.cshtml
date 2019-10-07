@@ -1,0 +1,522 @@
+﻿@using Gemstar.BSPMS.HotelScanOrder.Common.Pos.Item;
+@using Gemstar.BSPMS.HotelScanOrder.Common.Pos.Tab;
+
+@{
+    /**/
+
+    ViewBag.Title = "点菜";
+    Layout = null;
+    var itemSubClass = ViewBag.itemSubClass as List<ItemResultModel>;
+    var itemList = ViewBag.itemList as List<ItemResultModel>;
+    var OpenTabView = ViewBag.OpenTabView as OpenTabView;
+    var ran = new Random().Next();
+}
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+
+    <!-- Css -->
+    @*<link href="~/Content/Order/main.css" rel="stylesheet" />*@
+    <link href="~/Content/ScanOrder/global.css?v=@ran" rel="stylesheet" />
+    <script src="~/Scripts/queue.js"></script>
+    <link href="~/Scripts/ScanOrder/mui/css/mui.min.css?v=@ran" rel="stylesheet" />
+    <link href="~/Scripts/ScanOrder/layer_mobile/need/layer.css?v=@ran" rel="stylesheet" />
+    <link href="~/Scripts/ScanOrder/swiper-4.4.1/css/swiper.min.css?v=@ran" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.7.0/css/font-awesome.min.css?v=@ran" rel="stylesheet" />
+    <link href="~/Content/ScanOrder/layout.css?v=@ran" rel="stylesheet" />
+    <link href="~/Content/ScanOrder/orderIndex.css?v=@ran" rel="stylesheet" />
+    <link href="~/Content/ScanOrder/pos.css?v=@ran" rel="stylesheet" />
+    <link href="~/Content/ScanOrder/reset.css?v=@ran" rel="stylesheet" />
+    <script src="~/Scripts/ScanOrderB/ScanOrderList.js?v=@ran"></script>
+    <style>
+        /*规格样式*/
+
+        .selectSpecSumit {
+            z-index: 999 !important
+        }
+
+
+        .selectSpec .mui-table-view-cell > .title1 {
+        }
+
+        .selectSpec .mui-table-view-cell > .list a {
+            margin: 5px;
+        }
+
+        .list .spec-active {
+            background: rgba(209,234,254,1);
+            border: 1px solid rgba(209,234,254,1);
+            border-radius: .08rem;
+            color: #569AFF;
+        }
+
+        .selectSpec .mui-table-view-cell > .list {
+            float: left;
+            overflow: auto;
+            max-height: 130px;
+            width: calc(100% - 55px);
+        }
+
+        .layui-m-layer * {
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+        }
+
+        .ordersys-back {
+            color: #FFFFFF !important;
+        }
+    </style>
+</head>
+<body style="height:100%">
+    <header class="mui-bar mui-bar-nav">
+        @*<a class=" mui-icon mui-icon-left-nav mui-pull-left ordersys-back" onclick="back()"></a>*@
+        <h1 class="mui-title">@(ViewBag.TabNo + "/" + ViewBag.TabName)</h1>
+        @*<div class="refresh" onclick="refreshItem()">
+            <img src="~/images/refresh.png" alt="刷新菜式信息">
+        </div>*@
+        <div class="refresh" onclick="searchItem()" style="right:0.6rem">
+            <img src="~/images/search.png" alt="搜索">
+        </div>
+    </header>
+    <input type="hidden" id="IGuest" value="@OpenTabView.IGuest" />
+    <input type="hidden" id="RefeId" value="@OpenTabView.RefeId" />
+    <input type="hidden" id="Sale" value="@OpenTabView.Sale" />
+    <input type="hidden" id="Tabid" value="@OpenTabView.Tabid" />
+    <input type="hidden" id="TabNo" value="@OpenTabView.TabNo" />
+    <input type="hidden" id="BillId" value="@OpenTabView.BillId" />
+
+    <input type="hidden" id="WxPaytype" value="@ViewBag.WxPaytype" />
+    <input type="hidden" id="openId" value="@ViewBag.OpenId" />
+    <div class="layout mui-content py_product">
+        <!-- 侧面选项卡 -->
+        @*<p4 class="pt_biaoti f_left">点单</p4>*@
+        <div class="mui-slider-group">
+
+            <div class="mui-content mui-row mui-fullscreen py_cemian" id="item1mobile">
+
+                <div class="mui-col-xs-3">
+                    <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+                        @{
+                            for (int i = 0; i < itemSubClass.Count; i++)
+                            {
+                                var item = itemSubClass[i];
+                                if (i == 0)
+                                {
+                                    <a class="mui-control-item mui-active" href="#content@(item.Itemsubid)" id="@(item.Itemsubid)"> <span class="itemcount">0</span>@item.ItemSubname</a>
+                                }
+                                else
+                                {
+
+                                    <a class="mui-control-item " href="#content@(item.Itemsubid)" id="@(item.Itemsubid)"> <span class="itemcount">0</span>@item.ItemSubname</a>
+
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div id="segmentedControlContents" class="mui-col-xs-9">
+                    <div id="content0" class="mui-control-content mui-active">
+                        <ul class="mui-table-view">
+                            @Html.Partial("_ItemList", itemList)
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="item2mobile" class="mui-content mui-row mui-fullscreen" style="overflow-y:auto;background: #FFFFFF;">
+
+            </div>
+
+        </div>
+
+        <div class="settlement">
+            <div class="downOrder">
+                <button type="button" class="mui-btn  btn-active">点 菜</button>
+                <button type="button" class="mui-btn ">我的菜单</button>
+            </div>
+        </div>
+
+
+    </div>
+    <!--选择规格弹窗-->
+    <script type="text/ng-template" id="sppttmp">
+        <div class="selectSpec">
+            <input type="hidden" id="speceItemId" value="${item.itemId}" />
+            <input type="hidden" id="speceisLargess" value="${item.IsLargess}" />
+            <input type="hidden" id="speceisMultiUnit" value="${item.IsMultiUnit}" />
+            <input type="hidden" id="speceisAutoaction" value="${item.IsAutoaction}" />
+            <input type="hidden" id="speceitemSubClass" value="${item.itemSubClass}" />
+            <input type="hidden" id="igroupid" value="1" />
+
+            <div class="shopCart-top">
+                <strong>${item.itemName}</strong>
+                <a href="javascript:void(0);" onclick="closeSelectSpec();"><!--<i class="fa fa-close fa-2x" aria-hidden="true"></i>--></a>
+            </div>
+
+            <ul class="mui-table-view">
+                <!--单位  Begin-->
+                <li class="mui-table-view-cell selectSpec-unit" id="specUnit">
+                    <div class="title1">
+                        单位
+                    </div>
+                    <div class="list">
+                        {@{@Html.Raw("@");}each unitList as it,index}
+                        {@{@Html.Raw("@");}if it.IsDefault == true}
+                        <a class="mui-btn spec-active" onclick="selectUnit(this)" data-id="${it.UnitId}" data-price="${it.Price}">${it.UnitName}</a>
+                        {@{@Html.Raw("@");}else}
+                        <a class="mui-btn " onclick="selectUnit(this)" data-id="${it.UnitId}" data-price="${it.Price}">${it.UnitName}</a>
+                        {@{@Html.Raw("@");}/if}
+                        {@{@Html.Raw("@");}/each}
+                    </div>
+                </li>
+                <!--单位  Begin-->
+                <!--作法  Begin-->
+                {@{@Html.Raw("@");}if actionList.length >0}
+                <li class="mui-table-view-cell selectSpec-action" id="specAction">
+                    <div class="title1">
+                        作法
+                    </div>
+                    <div class="list">
+                        {@{@Html.Raw("@");}each actionList as it,index}
+                        <a class="mui-btn" onclick="updateItemAction(this)" data-id="${it.ActionId}" data-IsbyGuest="${it.IsbyGuest}" data-IsOrderAction="${it.IsOrderAction}" data-name="${it.ActionName}">${it.ActionName}</a>
+                        {@{@Html.Raw("@");}/each}
+                    </div>
+                </li>
+                <li class="mui-table-view-cell selectSpec-actionGroup" id="specActionGroup">
+                    <div class="title1">
+                        已点作法
+                    </div>
+                    <div class="list">
+                        <a id="addIgroupid" class="mui-btn spec-active" onclick="addGroup()" data-id="" data-ids="" data-names="">+</a>
+                    </div>
+                </li>
+                {@{@Html.Raw("@");}/if}
+                <!--作法          End-->
+                <!--要求          Begin-->
+                @*<li class="mui-table-view-cell selectSpec-request" id="specRequest" style="display:none;height:0px;">
+                    <div class="title1">
+                        要求
+                    </div>
+                    <div class="list">
+                        {@{@Html.Raw("@");}each requestList as it,index}
+                        <a class="mui-btn " onclick="selectRequest(this)" data-id="${it.RequestId}">${it.Name}</a>
+                        {@{@Html.Raw("@");}/each}
+
+                    </div>
+                </li>*@
+                <!--要求          End-->
+
+                <li id="specNum" class="mui-table-view-cell addNum" style="padding-bottom: 0px;">
+                    <div class="title1">
+                        数量
+                    </div>
+                    <div style="display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;flex-direction: row;">
+                        <a class="addB" style="display:block;background-size: .38rem .38rem" onclick="downNum(this)" data-subclassid="${item.itemSubClass}" data-id="${item.itemId}"></a>
+                        <span class="inputSpan" style="display:block">1</span>
+                        <a onclick="addNum(this)" class="addA" style="background-size: .38rem .38rem" data-subclassid="${item.itemSubClass}" data-id="${item.itemId}"></a>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="selectSpecSumit">
+                <div class="total" onclick=""><i class="fa fa-rmb" aria-hidden="true" style="margin-left:10px"></i> <strong class="price">${amount}</strong></div>
+                <div class="selectBtn" onclick="submitSpece()">确 认</div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="getsuccesstmp">
+        <div class="tishi">
+            <p class="title">${title}</p>
+            <p class="no">${msg}</p>
+        </div>
+    </script>
+
+    <script type="text/template" id="alertMsg">
+        <div class="titlemsg">提示</div>
+        <div class="content">${content}</div>
+        <div class="btn" onclick="alertClose()">确定</div>
+    </script>
+
+    <script type="text/javascript" src="~/Scripts/ScanOrder/mui/js/mui.min.js?v=@ran"></script>
+    <script type="text/javascript" src="~/Scripts/ScanOrder/jquery-3.3.1.min.js?v=@ran"></script>
+    <script type="text/javascript" src="~/Scripts/ScanOrder/layer_mobile/layer.js?v=@ran"></script>
+    <script type="text/javascript" src="~/Scripts/ScanOrder/swiper-4.4.1/js/swiper.min.js?v=@ran"></script>
+
+    <script src="~/Scripts/ScanOrderB/ScanOrder.js?v=@ran"></script>
+    <script src="~/Scripts/ScanOrder/globol.js?v=@ran"></script>
+
+</body>
+
+</html>
+
+<script src="~/Scripts/ScanOrder/jstorage.js?v=@ran"></script>
+<script src="~/Scripts/ScanOrder/juicer-min.js?v=@ran"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //获得slider插件对象
+        var gallery = mui('.banner');
+        gallery.slider({
+            interval: 1000 //自动轮播周期，若为0则不自动播放，默认为0；
+        });
+    });
+</script>
+<!-- mui -->
+<script type="text/javascript">
+    var alertIndex;
+    mui.init({
+        swipeBack: false
+    });
+    /* 左侧选项卡 */
+    var controls = document.getElementById("segmentedControls");
+    var contents = document.getElementById("segmentedControlContents");
+    //tab 标签切换
+    $(".settlement button").each(function (index) {
+        $(this).click(function () {
+
+
+            var _div = $(".mui-slider-group").children("div");
+            $(_div).eq(index).show().siblings().hide();
+            if (index == 1) {
+                if (!$(this).is(".btn-active")) {
+                    //从数据库读取数据以及从缓存中读取数据
+                    GetOrderList();
+                    $(".settlement button").removeClass("btn-active");
+                    $(this).addClass("btn-active");
+                }
+            }
+            else {
+                $(".settlement button").removeClass("btn-active");
+                $(this).addClass("btn-active");
+            }
+
+        });
+    });
+    $(function () {
+        /*手风琴效果切换*/
+        $('#item2mobile li .pos-item').click(function () {
+            $(this).next('.pos-details').slideToggle().parents('li').siblings().find('.pos-details').slideUp();
+        })
+        var index = getQueryString("order");
+        if (index==1) {
+            $(".settlement button").trigger("click", index);
+        }
+
+    })
+    function lAlert(msg) {
+        layer.closeAll();
+        var _data = { content: msg };
+        var perinfotmp = $("#alertMsg").html();
+        var perinfohtml = juicer(perinfotmp, _data);
+        //页面层
+        alertIndex=layer.open({
+            type: 1
+            , anim: 'up'
+            , className: "loadwin"
+            , content: perinfohtml
+            , shade: 'background-color: rgba(0,0,0,.2)'
+        });
+    }
+    function alertClose()
+    {
+        layer.close(alertIndex);
+    }
+    function back()
+    {
+        if ($("#Tabid").val()!="") {
+              window.location.href = '@Url.Action("Index", "Tab")';
+        }
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return r[2]; return '';
+    }
+
+
+</script>
+
+<script>
+    $(function () {
+        $("#segmentedControls a").bind("click", function () {
+            GetItemList($(this).attr("id"));
+
+        })
+    })
+
+    function GetItemList(subClassId) {
+        var parms = {
+            url: "@Url.Action("_ItemList", "InSingle_B")",
+            type: 'post',
+            dataType: "html",
+            data: { subClassId: subClassId, tabId: $("#Tabid").val(), refeId: $("#RefeId").val() }
+            };
+        JQajaxPromiseForLayer(parms)
+                .then(function (data) {
+                    $(".mui-table-view").html(data);
+                    loadItemList();
+            })
+            .catch(function (error) {
+                    // layer.msg(error, 1);
+             })
+    }
+    function refreshItem()
+    {
+        var subClassId = "";
+        $("#segmentedControls .mui-control-item").each(function () {
+            if ($(this).is(".mui-active")) {
+                subClassId = $(this).attr("id");
+                return false;
+            }
+        })
+        var parms = {
+        url: "@Url.Action("GetRefreshItem", "InSingle_B")",
+        type: 'post',
+        dataType: "html",
+        data: { subClassId: subClassId, tabId: $("#Tabid").val(), refeId: $("#RefeId").val() }
+        };
+        JQajaxPromiseForLayer(parms)
+            .then(function (data) {
+                $(".mui-table-view").html(data);
+                loadItemList();
+        })
+        .catch(function (error) {
+                // layer.msg(error, 1);
+        })
+    }
+    function searchItem() {
+        document.activeElement.blur();//屏蔽默认键盘弹出；
+        $.ajax({
+            url: '@Url.Action("_QueryItemList", "InSingle_B")',
+            type: 'post',
+            data: {
+                title:"@ViewBag.Title"
+            },
+            dataType: 'html',
+            success: function (data) {
+                queryIndex = layer.open({
+                    type: 1,
+                    content: data,
+                    area: ['100%', '100%'],
+                    maxmin: true,
+                    style: 'border:none;width:100%;height: 100%;background-color:#ffffff;',
+                    shade: false,
+                    success: function (layero) {
+                        document.getElementById('searchIpt').focus();
+                        $(".settlement").attr("style", "display:none;");
+                        mui('.mui-input-row input').input();
+                        $("#searchIpt").on('keypress', function (event) {
+                            searchItemData(event, false);
+                        });
+                    }
+                });
+                $("#itemResultList").css("max-height", "calc(" + $(document).height() + "px - 0.9rem)").css("overflow-y","auto");
+            },
+            error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+    function searchItemData(event,flag) {
+        var e = event || window.event;
+        var obj = e.target || e.srcElement;
+        var keycode = e.keyCode;
+        var searchName = $("#searchIpt").val();
+        if (searchName.replace(" ", "") == "") { return false; }
+        if (keycode == '13' || flag) {
+            e.preventDefault();
+            //请求搜索接口
+            $.ajax({
+                url: '@Url.Action("_QueryItemResultList", "InSingle_B")',
+                type: 'post',
+                data: {
+                    searchName: searchName,
+                    tabId: $("#Tabid").val(),
+                    refeId: $("#RefeId").val()
+                },
+                dataType: 'html',
+                success: function (data) {
+                    $("#ul_searchItemList").html(data);
+                    loadItemList();
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                }
+            });
+        }
+    }
+    var queryIndex;
+        //查询界面关闭事件
+    function closeQuery() {
+        $(".settlement").attr("style", "display:block;");
+        var list = JSON.parse(localStorage.getItem("billDetailList"));
+        layer.close(queryIndex);
+        if (list != null && list.length > 0) {
+            $("#segmentedControlContents .mui-control-content").each(function () {
+
+                if ($(this).hasClass("mui-active")) {
+                    $(this).find("span").each(function () {
+                        for (var i = 0; i < list.length; i++) {
+                            if ($(this).attr("data-id") == list[i].Itemid) {
+                                $(this).html(list[i].Quantity);
+                                $(this).css("display", "block");
+                                $(this).prev().css("display", "block");
+                            }
+                        }
+                    });
+                }
+
+            });
+        }
+        loadItemList();
+    }
+</script>
+
+<script>
+    //已点菜式JS
+    function GetOrderList()
+    {
+
+        var itemList = storage.getItem("itemList");
+        if (itemList != null) {
+            var jsonModel = JSON.parse(itemList);//转换为json对象
+            itemList = jsonModel.itemList;
+        }
+        var parms = {
+            url: "@Url.Action("_OrderList", "InSingle_B")",
+            type: 'post',
+            dataType: "html",
+            data: { tabId: $("#Tabid").val(), refeId: $("#RefeId").val(), detailStr: itemList}
+            };
+        JQajaxPromiseForLayer(parms)
+                .then(function (data) {
+
+                    $("#item2mobile").html(data);
+                    setOrderColor();
+                    GetSumAmount();
+                    $('.pos-tableList li .pos-item').click(function () {
+                        if ($(this).next('.pos-details').css('display') == 'none') {
+                            $(this).next('.pos-details').slideDown().parents('li').siblings().find('.pos-details').slideUp();
+                            $('.footer-box').hide();
+
+                        } else {
+                            $(this).next('.pos-details').slideUp();
+                            $('.footer-box').show(500);
+
+                        }
+                    })
+
+            })
+            .catch(function (error) {
+                    // layer.msg(error, 1);
+             })
+    }
+</script>
+

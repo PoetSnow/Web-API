@@ -1,0 +1,482 @@
+﻿@model List<Gemstar.BSPMS.HotelScanOrder.Common.Pos.PayMethod.GetPayMethodResultModel>
+@{
+    Layout = null;
+    var rnd = new Random().Next();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=yes">
+    <link rel="stylesheet" href="../../Content/ScanOrder/reset.css?v=@rnd">
+    <link rel="stylesheet" href="../../Content/ScanOrder/pay.css?v=@rnd">
+    <script src="~/Scripts/ScanOrder/layer_mobile/layer.js?v=@rnd"></script>
+    <script src="~/Scripts/ScanOrder/juicer-min.js?v=@rnd"></script>
+    <link href="~/Content/ScanOrder/global.css" rel="stylesheet" />
+
+</head>
+<body class="bj">
+    <input type="hidden" id="refeId" value="@ViewBag.RefeId" />
+    <input type="hidden" id="tabId" value="@ViewBag.TabId" />
+    <input type="hidden" id="billId" value="@ViewBag.BillId" />
+    <input type="hidden" id="amount" value="@ViewBag.Amount" />
+
+    <div class="payHeader">
+        <a href="javascript:void(0);" class="goBack" onclick="shuaxin()"></a>
+        <p class="payTitle">支付</p>
+    </div>
+    <div class="payContent">
+        <div class="payMoney">
+            <div class="payPrice">
+                @*<span>￥</span>*@<b>@ViewBag.Amount</b>
+            </div>
+            @*<p class="payText">捷信达测试酒店</p>*@
+        </div>
+        <div class="payMode">
+            <ul>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <li onclick="checked($(this))" data-code="@item.Code" data-id="@item.PaymodeId" data-rate="@item.XRate" data-payUrl="@item.InterFaceadd" data-payReamk="@item.PayReamk" data-payType="@item.PayType">
+                            <span>@item.PaymodeName</span>
+                            <input type="radio" name="pay" >
+                        </li>
+                    }
+                }
+
+            </ul>
+            @*<div class="more">
+                    <span>更多支付方式</span>
+                </div>*@
+        </div>
+        <div class="payBtn" onclick="paySubmit()">
+            确认支付
+        </div>
+    </div>
+
+
+
+    <!--点击说明弹出层-->
+    <div class="pay-shade" style="display:none;"></div>
+    <div class="payMessage">
+        <div class="roomNum">
+            <span>房间号：</span><input type="text">
+        </div>
+        <ul class="roomMessage">
+            <li>
+                <span>客人名：</span>
+                <p>202</p>
+            </li>
+            <li>
+                <span>余额：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>抵店时间：</span>
+                <p>4月1日</p>
+            </li>
+            <li>
+                <span>房价：</span>
+                <p>320</p>
+            </li>
+        </ul>
+        <ul class="payDetail">
+            <li>
+                <span>授权金额：</span>
+                <p>200</p>
+            </li>
+            <li>
+                <span>信用调节额：</span>
+                <p>200</p>
+            </li>
+            <li>
+                <span>可用余额：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>挂账限额：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>付款方式：</span>
+                <p>微信</p>
+            </li>
+            <li>
+                <span>已挂账金额：</span>
+                <p>微信</p>
+            </li>
+        </ul>
+        <ul class="payDetail">
+            <li>
+                <span>可用额度：</span>
+                <p>320</p>
+            </li>
+        </ul>
+        <div class="remark">
+            <span>备注：</span>
+            <p>无</p>
+        </div>
+        <div class="payClose" onclick="close_choose_attr()"></div>
+    </div>
+
+
+    <script type="text/template" id="mbrCard">
+        <div class="roomNum">
+            <span>卡号/手机号：</span><input type="text">
+        </div>
+        <ul class="roomMessage">
+            <li>
+                <span>客户名：</span>
+                <p>202</p>
+            </li>
+            <li>
+                <span>卡类型：</span>
+                <p>102</p>
+            </li>
+            <li>
+                <span>储值余额：</span>
+                <p>4月1日</p>
+            </li>
+            <li>
+                <span>状态：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>用户类型：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>有效期：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>联系人4234234：</span>
+                <p>320232</p>
+            </li>
+            <li>
+                <span>性别：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>生日：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>可用积分：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>已用金额：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>本金余额：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>赠券余额：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>市场类型：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>公司名称：</span>
+                <p>320</p>
+            </li>
+            <li>
+                <span>消费次数：</span>
+                <p>320</p>
+            </li>
+        </ul>
+        <div class="payClose" onclick="close_choose_attr()"></div>
+    </script>
+
+
+    <script type="text/template" id="alertMsg">
+        <div class="titlemsg">提示</div>
+        <div class="content">${content}</div>
+        <div class="btn" onclick="alertClose()" id="btnOk">确定</div>
+    </script>
+
+    <script type="text/javascript" src="../../Scripts/jquery-3.3.1.min.js?v=@rnd"></script>
+    <script type="text/javascript" src="../../Scripts/queue.js?v=@rnd"></script>
+    <script src="~/Scripts/ScanOrder/globol.js?v=@rnd"></script>
+    <script src="~/Scripts/payScripts/payList.js?v=@rnd"></script>
+    <script>
+        var alertIndex;
+        function checked(event) {
+            event.addClass('checked').siblings().removeClass('checked');
+            pay(event)
+        }
+        function pay(event) {
+            var code = $(event).attr("data-code");  //付款处理动作
+            var rate = $(event).attr("data-rate");    //汇率
+            var payId = $(event).attr("data-id");  //付款处理动作
+            //付款方式切换
+            var rateAmount = Number($("#amount").val()) / Number(rate);
+            var postModel = {
+                refeId: $("#refeId").val(),
+                amount: rateAmount
+            }
+            var parms = {
+                url: "/PayMethod/CmpAmount",
+                type: 'post',
+                dataType: "json",
+                data: postModel
+            };
+            JQajaxPromiseForLayer(parms)
+                .then(function (data) {
+                    if (data.Success) {
+                        $(".payMoney b").html(data.Data);
+                        if (code == "WxBarcode") {         //微信支付
+                            if (typeof Android2JS != "undefined") {
+                                Android2JS.StartScan("WxBarcode");  //商米机器调用摄像头扫码
+                            }
+                            else {
+                                payHtml(code);  //其他设备 弹出输入框
+                            }
+                        }
+                        else if (code == "AliBarcode") {        //支付宝支付
+                            lAlert("暂不支持此付款方式");
+                        }
+                        else if (code == "mbrCardAndLargess" || code == "mbrLargess" || code == "mbrCard") {
+                            payHtml(code);
+                            //lAlert("暂不支持此付款方式");
+                        }
+                        else if (code == "house") {
+                            payHtml(code);
+                           
+                        }
+                        else if (code == "no") {
+                           // paySubmit();    //无付款处理动作的支付方式直接支付成功
+                        }
+                        else {
+                            //payHtml(code);
+                            lAlert("暂不支持此付款方式");
+                        }
+                    }
+
+                })
+                .catch(function (error) {
+                    // layer.msg(error, 1);
+                })
+        }
+
+        //支付参数
+        function payNamesModel(_this) {
+            this.paymodeid = $(_this).attr("data-id");
+            this.payCode = $(_this).attr("data-code");
+            this.payamount = $(".payMoney b").html();
+            this.prepayID = "";
+            this.memo = "";
+            this.dueamount = $("#amount").val();
+            this.padNo = GetPdaNo();
+            this.payBarCode = "";
+            this.payUrl = $(_this).attr("data-payurl");;                 //接口地址
+            this.payRemark = $(_this).attr("data-payreamk");             //支付备注
+            this.payType = $(_this).attr("data-paytype");                  //支付类型
+
+        }
+
+        function setPayModel() {
+            this.BillNo = $("#billId").val();
+            this.RefeId = $("#refeId").val();
+            this.TabId = $("#tabId").val();
+            this.KeyId = "";
+            this.PayNames = "";
+        }
+
+        //无处理动作的付款操作
+        function noPay() {
+            var li = $(".payMode li");
+            var obj;
+            li.each(function () {
+                if ($(this).is(".checked")) {
+                    obj = $(this);
+                    return false;
+                }
+            })
+            var model = new payNamesModel(obj);
+            return model;
+        }
+
+        //微信扫码 prepayID=扫码得到的条码
+        function WxBarcode(prepayID) {
+            var li = $(".payMode li");
+            var obj;
+            li.each(function () {
+                if ($(this).is(".checked")) {
+                    obj = $(this);
+                    return false;
+                }
+            });
+            var model = new payNamesModel(obj);
+            model.payBarCode = prepayID;
+            if (typeof Android2JS != "undefined") {
+                postSubmit(model);
+            }
+            else {
+                return model;
+            }
+
+        }
+
+        function mbrCardModel() {
+            var li = $(".payMode li");
+            var obj;
+            li.each(function () {
+                if ($(this).is(".checked")) {
+                    obj = $(this);
+                    return false;
+                }
+            });
+            var model = new payNamesModel(obj);
+            model.payBarCode = $("#profileId").val();   //会员卡
+            if (model.payBarCode == "") {
+                return false;
+            }
+            model.memo = $("#mbrCardText").val() + "," + $(".roomMessage li").eq(0).find("p").html() + "," + $(".roomMessage li").eq(2).find("p").html();
+            return model;
+        }
+
+        function housrModel()
+        {
+            var li = $(".payMode li");
+            var obj;
+            li.each(function () {
+                if ($(this).is(".checked")) {
+                    obj = $(this);
+                    return false;
+                }
+            });
+            var model = new payNamesModel(obj);
+            model.payBarCode = $("#roomNo").val();   //房号
+            model.memo = $("#roomNo").val() + "," + $(".roomMessage li").eq(0).find("p").html();
+            return model;
+        }
+
+        //确认支付
+        function paySubmit() {
+            var li = $(".payMode li");
+            var isCheck = false;
+            var payCode = "";
+            li.each(function () {
+                if ($(this).is(".checked")) {
+                    payCode = $(this).attr("data-code");
+                    isCheck = true;
+                    return false;
+                }
+            })
+            if (isCheck == false) {
+                lAlert("请选择付款方式"); return false;
+            }
+            var payModel = null;
+            if (payCode == "no") {
+                payModel = noPay();
+            }
+            else if (payCode == "WxBarcode") {
+                payModel = WxBarcode($("#WxBarcode").val());
+
+            }
+            else if (payCode == "mbrCardAndLargess" || payCode == "mbrCard" || payCode == "mbrLargess") {
+                //会员卡
+                payModel = mbrCardModel();
+                if (payModel == false) {
+                    lAlert("请输入会员卡");
+                    return false;
+                }
+            }
+            else if (payCode =="house") {
+                //房账
+                payModel = housrModel();
+                if (payModel == false) {
+                    lAlert("请输入会员卡");
+                    return false;
+                }
+                console.log(payModel)
+            }
+            postSubmit(payModel);
+
+        }
+        function postSubmit(payModel) {
+            //根据付款处理动作 返回具体的付款信息
+            var postModel = new setPayModel();
+            postModel.PayNames = JSON.stringify(payModel);
+            var parms = {
+                url: "/PayMethod/Pay",
+                type: 'post',
+                dataType: "json",
+                data: postModel
+            };
+            JQajaxPromiseForLayer(parms)
+                .then(function (data) {
+                    if (data.Success) {
+                        lAlert("支付成功")
+                        $("#btnOk").bind("click", function () {
+                            window.location.href = "/Tab";
+                        })
+                        //setTimeout(function () {
+                        //    window.location.href = "/Tab";
+                        //},1000);
+                    }
+                    else {
+                        lAlert(data.Data);
+                        //$(".payMode li").removeClass('checked');
+                    }
+                })
+                .catch(function (error) {
+                    // layer.msg(error, 1);
+                })
+        }
+
+
+
+
+
+    </script>
+    <script type="text/javascript">
+        /*关闭弹窗方法*/
+        function close_choose_attr() {
+            $(".payMessage").html("");
+            document.body.style.overflow = '';
+            $(".pay-shade").hide();
+            $('.payMessage').animate({ height: '0' }, [10000]);
+        }
+
+        //后退
+        function shuaxin() {
+            var billid = $("#billId").val();
+            var refeId = $("#refeId").val();
+            var tabId = $("#tabId").val();
+            window.location.href = '/InSingle/Index?BillId=' + billid + '&RefeId=' + refeId + '&Tabid=' + tabId + '&order=1';
+        }
+
+        function lAlert(msg) {
+            layer.closeAll();
+            var _data = { content: msg };
+            var perinfotmp = $("#alertMsg").html();
+            var perinfohtml = juicer(perinfotmp, _data);
+            //页面层
+            alertIndex = layer.open({
+                type: 1
+                , anim: 'up'
+                , className: "loadwin"
+                , content: perinfohtml
+                , shade: 'background-color: rgba(0,0,0,.2)'
+                , shadeClose: false,
+            });
+        }
+
+        function alertClose() {
+            layer.close(alertIndex)
+        }
+    </script>
+</body>
+</html>

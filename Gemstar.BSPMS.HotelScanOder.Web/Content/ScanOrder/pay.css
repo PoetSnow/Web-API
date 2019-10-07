@@ -1,0 +1,326 @@
+.payHeader{
+    width: 100%;
+    height: .88rem;
+    background-color: #FF6F28;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+}
+.goBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: .42rem;
+    padding-left: .39rem;
+    height: .88rem;
+    background: url(../../images/arrows.png) no-repeat right center;
+    background-size: .42rem .42rem;
+}
+.payTitle{
+    font-size: .34rem;
+    color: #FFFFFF;
+    line-height: .88rem;
+    text-align: center;
+}
+.payContent{
+    height: calc(100% - 1.8rem);
+    width: 100%;
+    position: relative;
+    margin-top: .88rem;
+}
+.payBtn{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: .91rem;
+    background-color: #FF6F28;
+    color: #FFFFFF;
+    font-size: .34rem;
+    text-align: center;
+    line-height: .91rem;
+}
+.payMoney{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+.payPrice{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    color: #333333;
+    font-weight: bold;
+    margin-top: .62rem;
+}
+.payPrice span{
+    font-size: .28rem;
+}
+.payPrice b{
+    font-size: .48rem;
+}
+.payText{
+    font-size: .3rem;
+    color: #333333;
+    text-align: center;
+    margin-top: .43rem;
+}
+.payMode{
+    width: 100%;
+    margin-top: .7rem;
+    border-top: .01rem solid #EAEAEA;
+    margin-bottom: 1.2rem;
+}
+.payMode::-webkit-scrollbar {
+    display: none;
+}
+.payMode ul{
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.payMode ul li{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: .97rem;
+    border-bottom: .01rem solid #eaeaea;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .6rem 0 .42rem;
+
+}
+.payMode ul li span{
+    font-size: .3rem;
+    color: #333333
+}
+.payMode ul li input[type="radio"]{
+    width: .26rem;
+    height: .26rem;
+    background: url(../../images/check.png) no-repeat center;
+    background-size: .26rem .26rem;
+}
+.payMode ul li input[type="radio"]:checked{
+    width: .26rem;
+    height: .26rem;
+    background: url(../../images/checked.png) no-repeat center;
+    background-size: .26rem .26rem;
+}
+.more{
+    width: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.more span{
+    font-size: .26rem;
+    color: #333333;
+    margin-right: .64rem;
+    padding-right: .3rem;
+    background: url(../../images/more.png) no-repeat right center;
+    background-size: .15rem .09rem;
+    margin-top: .3rem;
+}
+.pay-shade{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0,0,0,.3);
+}
+.payMessage{
+    width: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    left: 0;
+    bottom: -.91rem;
+    z-index: 999;
+    height: 0;
+}
+.roomNum{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .3rem .56rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: .01rem solid #eee;
+}
+.roomNum span{
+    font-size: .3rem;
+    font-weight: bold;
+    color: #333333;
+}
+.roomNum input{
+    flex: 1;
+    height:.72rem;
+    background:rgba(248,248,248,1);
+    border:.01rem solid rgba(204,204,204,1);
+    border-radius:.08rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .34rem;
+    text-align: center;
+}
+.roomMessage {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .35rem 1.1rem 0 .56rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    max-height: 5rem;
+    overflow:auto;
+}
+.roomMessage li{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    margin-bottom: .3rem;
+    font-size: .3rem;
+    width:100%;
+}
+    .roomMessage::-webkit-scrollbar {
+        display: none;
+    }
+.roomMessage li span{
+    color: #333333;
+}
+.roomMessage li p{
+    color: #404040;
+}
+.payDetail{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .2rem .6rem 0 .56rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.payDetail li{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    margin-bottom: .3rem;
+    font-size: .3rem;
+}
+.payDetail li span{
+    color: #333333;
+}
+.payDetail li p{
+    color: #404040;
+}
+.remark{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 .6rem 0 .56rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    font-size: .3rem;
+    align-items: baseline;
+    margin-bottom: .8rem;
+}
+.remark span{
+    color: #333333;
+}
+.remark p{
+    color: #404040;
+    flex: 1;
+    line-height: .34rem;
+}
+.payClose{
+    position: absolute;
+    top: -.57rem;
+    right: .3rem;
+    z-index: 999;
+    padding: .12rem;
+    width: .32rem;
+    height: .32rem;
+    background: url(../../images/payClose.png) no-repeat center;
+    background-size: .32rem .32rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (device-width:320px){
+    .payMode{
+        max-height: 4rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

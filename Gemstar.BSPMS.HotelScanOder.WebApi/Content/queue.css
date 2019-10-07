@@ -1,0 +1,51 @@
+/* CSS Document */
+
+body,h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, pre, code,form, fieldset, legend, input, button,textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+html {font-family:"Microsoft YaHei",sans-serif;font-size:625%}
+
+body {font-size:0.24rem;color:#000000;background: #FFF;line-height:1;}
+* {-webkit-tap-highlight-color: transparent;  -webkit-appearance: none;}
+input {border-radius:0;}
+html, body{-webkit-text-size-adjust: 100% !important;}
+ol, ul {list-style: none;}
+a{text-decoration:none;color:#000000;}
+img{ border:none;display:block;max-width:100%;}
+h1, h2, h3, h4, h5, h6{-webkit-margin-before: 0em;-webkit-margin-after: 0em;font-size: 100%;font-weight: normal;}
+input, button, textarea, select {font-size: 100%;}
+input, textarea{border:none; outline:none;resize:none;}
+input::-webkit-input-placeholder {color: #898989 !important;}
+
+/* 清除浮动 */
+ .clear:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility:hidden;
+}
+ .clear {
+  *zoom: 1;
+}
+ .f_left{
+  float:left;
+}
+.f_right{
+  float:right;
+}
+.box{-webkit-box-sizing:border-box;box-sizing:border-box;}
+.firstWrap{max-width:6.4rem;min-width:3rem;margin: 0 auto;} 
+.centermrgin{margin-top:0.75rem;}
+
+body  iframe{
+	opacity:0;
+	display:none!important;
+}
+
+
+.requestlayer .layui-m-layercont i {
+            background-color: #ff6f28 !important
+        }
+
+.requestlayer .layui-m-layercont p {
+            color: #ff6f28 !important
+        }
