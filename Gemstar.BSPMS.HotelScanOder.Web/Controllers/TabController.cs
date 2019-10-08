@@ -69,7 +69,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
         /// <returns></returns>
         private void GetRefeList(RefePostModel model)
         {
-            var result = JsonHelp.PostDataResult(model, PostType.GetRefeList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetRefeList, CurrentInfo.NotifyUrl);
 
             if (result != null)
             {
@@ -98,7 +98,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
         {
             data = "";
             //获取接口数据
-            var result = JsonHelp.PostDataResult(model, PostType.GetTabList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetTabList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")

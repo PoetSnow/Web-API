@@ -49,7 +49,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                 RefeId = refeId ?? "",
                 Amount = Convert.ToDecimal(amount)
             };
-            var result = JsonHelp.PostDataResult(posData, PostType.PayBillAmount, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(posData, postType.PayBillAmount, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -96,7 +96,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                 model.operType = (byte)PosbillDetailStatus.正常;
                 try
                 {
-                    var result = JsonHelp.PostDataResult(model, PostType.PayBill, CurrentInfo.NotifyUrl);
+                    var result = JsonHelp.PostDataResult(model, postType.PayBill, CurrentInfo.NotifyUrl);
                     return cmpPayResult(result);
                 }
                 catch (Exception ex)

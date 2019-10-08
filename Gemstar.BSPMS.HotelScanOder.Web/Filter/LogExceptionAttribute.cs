@@ -42,7 +42,8 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Filter
                         OperType = "错误",
                         OperContent = content
                     };
-                    JsonHelp.PostDataResult(posData, PostType.OperLog);
+                    var postType = new PostType();
+                    JsonHelp.PostDataResult(posData, postType.OperLog);
                     //logService.AddSysLog(filterContext, username);
                 }
                 catch

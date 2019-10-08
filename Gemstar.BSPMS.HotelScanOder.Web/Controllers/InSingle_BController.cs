@@ -288,7 +288,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                     OpenData = openTabStr,
                     KeyId = keyId ?? ""
                 };
-                var result = JsonHelp.PostDataResult(postModel, PostType.InBill, CurrentInfo.NotifyUrl);
+                var result = JsonHelp.PostDataResult(postModel, postType.InBill, CurrentInfo.NotifyUrl);
                 if (result != null)
                 {
                     if (result.ErrorNo == "1")
@@ -359,7 +359,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             };
             try
             {
-                var detailResult = JsonHelp.PostDataResult(billDetailModel, PostType.InBillDetail, CurrentInfo.NotifyUrl);
+                var detailResult = JsonHelp.PostDataResult(billDetailModel, postType.InBillDetail, CurrentInfo.NotifyUrl);
                 if (detailResult != null)
                 {
                     if (detailResult.ErrorNo == "1")
@@ -405,7 +405,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                 KeyId = keyid ?? "",
                 BillId = billId
             };
-            var result = JsonHelp.PostDataResult(postModel, PostType.BillCmp, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(postModel, postType.BillCmp, CurrentInfo.NotifyUrl);
 
         }
 
@@ -478,7 +478,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                 UserCode = "扫码点餐微信支付",
             };
             //调用接口产生待支付数据
-            var result = JsonHelp.PostDataResult(model, PostType.PayBill, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.PayBill, CurrentInfo.NotifyUrl);
             if (result.ErrorNo == "1")
             {
                 // var payResult = JsonHelp.Deserialize<List<PayBillResultModel>>(result.Msg).ToList().FirstOrDefault();
@@ -564,7 +564,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             postPayBillPostModel.operType = (byte)PosbillDetailStatus.正常;      //再次调用接口
 
             postPayBillPostModel.PayNames = JsonHelp.Serialize(payBillNamesModel);
-            var result = JsonHelp.PostDataResult(postPayBillPostModel, PostType.PayBill, notifyUrl);
+            var result = JsonHelp.PostDataResult(postPayBillPostModel, postType.PayBill, notifyUrl);
             //return cmpPostApiResult(result);
             return View();
         }

@@ -77,7 +77,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             model.PayModeId = model.PayModeId == null ? "" : model.PayModeId;
 
             //获取接口数据
-            var result = JsonHelp.PostDataResult(model, PostType.GetReport_BillList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetReport_BillList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 return Json(JsonHelp.Deserialize<List<ReportBillListResultModel>>(result.Msg), JsonRequestBehavior.AllowGet);
@@ -89,7 +89,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
         public List<ReportBillDetailListResultModel> GetBillDetailListData(ReportBillDetailListPostModel model)
         {
             //获取接口数据
-            var result = JsonHelp.PostDataResult(model, PostType.GetReport_BillDetailList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetReport_BillDetailList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 return JsonHelp.Deserialize<List<ReportBillDetailListResultModel>>(result.Msg);
@@ -105,7 +105,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             model.Module = CurrentInfo.Module ?? "";
 
             //获取接口数据
-            var result = JsonHelp.PostDataResult(model, PostType.GetReport_InBalanceList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetReport_InBalanceList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 return Json(JsonHelp.Deserialize<List<ReportInBalanceListResultModel>>(result.Msg), JsonRequestBehavior.AllowGet);
@@ -122,7 +122,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             model.Module = CurrentInfo.Module ?? "";
 
             //获取接口数据
-            var result = JsonHelp.PostDataResult(model, PostType.GetReport_SellDetailList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetReport_SellDetailList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 return Json(JsonHelp.Deserialize<List<ReportSellDetailListResultModel>>(result.Msg), JsonRequestBehavior.AllowGet);

@@ -22,7 +22,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models.Pay
             {
                 return JsonResultData.Failure("买单失败！");
             }
-            var result = JsonHelp.PostDataResult(model, PostType.PayBill);
+            var result = JsonHelp.PostDataResult(model, postType.PayBill);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -69,7 +69,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models.Pay
                         payBillNames.prepayID = mid.ToString();
                         model.PayNames = JsonHelp.Serialize(payBillNames);
                         model.operType = (byte)PosbillDetailStatus.正常;
-                        result = JsonHelp.PostDataResult(model, PostType.PayBill);
+                        result = JsonHelp.PostDataResult(model, postType.PayBill);
                         return cmpPostApiResult(result);
 
                     }

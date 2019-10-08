@@ -3,6 +3,7 @@ using Gemstar.BSPMS.HotelScanOrder.Common.Pos.PayBill;
 using Gemstar.BSPMS.HotelScanOrder.Common.PosEnum;
 using System;
 using System.Text;
+
 namespace Gemstar.BSPMS.HotelScanOrder.Web.Models.Pay
 {
     /// <summary>
@@ -23,7 +24,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models.Pay
             {
                 return JsonResultData.Failure("买单失败！");
             }
-            var result = JsonHelp.PostDataResult(model, PostType.PayBill);
+            var result = JsonHelp.PostDataResult(model, postType.PayBill);
 
             if (result != null)
             {
@@ -48,7 +49,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models.Pay
                         //payBillNames.prepayID = settleTransno;
                         model.PayNames = JsonHelp.Serialize(payBillNames);
                         model.operType = (byte)PosbillDetailStatus.正常;      //再次调用接口
-                        result = JsonHelp.PostDataResult(model, PostType.PayBill);
+                        result = JsonHelp.PostDataResult(model, postType.PayBill);
                         return cmpPostApiResult(result);
 
                     }

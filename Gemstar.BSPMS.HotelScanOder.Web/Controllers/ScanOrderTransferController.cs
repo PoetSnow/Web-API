@@ -34,7 +34,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             HotelInterfacePostModel model = new HotelInterfacePostModel() { Hid = hid };
             try
             {
-                var result = JsonHelp.PostDataResult(model, PostType.GetHotelSM);
+                var result = JsonHelp.PostDataResult(model, postType.GetHotelSM);
                 if (result == null)
                 {
                     return SetError();
@@ -113,7 +113,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             //获取酒店信息
             var model = new LoginPostModel() { Hid = hid };
             //调用接口
-            var hotelResult = JsonHelp.PostDataResult(model, PostType.GetHotelInfo, NotifyUrl);
+            var hotelResult = JsonHelp.PostDataResult(model, postType.GetHotelInfo, NotifyUrl);
 
             if (hotelResult == null)
             {
@@ -151,7 +151,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                         PosRefeid = "",
                         Module = currentinfo.Module
                     };
-                    var tabResult = JsonHelp.PostDataResult(tabPostModel, PostType.GetTabList, NotifyUrl);
+                    var tabResult = JsonHelp.PostDataResult(tabPostModel, postType.GetTabList, NotifyUrl);
                     var billId = "";    //账单ID
                     string tabNo = "";  //餐台编码
                     string tabName = "";    //餐台名称

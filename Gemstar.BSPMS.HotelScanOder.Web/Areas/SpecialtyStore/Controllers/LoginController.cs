@@ -28,6 +28,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Areas.SpecialtyStore.Controllers
         [HttpPost]
         public JsonResult Index(string usercode="",string pwd="",string snno="")
         {
+            var postType = new PostType();
             if (string.IsNullOrEmpty(usercode))
             {
                 return Json( JsonResultData.Failure(Resources.GlobalResource.ResourceManager, Thread.CurrentThread.CurrentUICulture,"请输入用户名") );
@@ -38,7 +39,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Areas.SpecialtyStore.Controllers
             }
 
             var sendata = new LoginPostModel { hid="",pdano=snno,pwd=pwd,usercode =usercode};
-            var res = GetPostData<LoginResultModel>(sendata, PostType.SPA_Login, out PostErrorModel postErrorModel);
+            var res = GetPostData<LoginResultModel>(sendata, postType.SPA_Login, out PostErrorModel postErrorModel);
             if (res == null || res.Count == 0)  //出现错误
             {
                 if (postErrorModel != null)

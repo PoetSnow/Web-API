@@ -323,7 +323,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                     OpenData = openTabStr,
                     KeyId = keyId ?? ""
                 };
-                var result = JsonHelp.PostDataResult(postModel, PostType.InBill, CurrentInfo.NotifyUrl);
+                var result = JsonHelp.PostDataResult(postModel, postType.InBill, CurrentInfo.NotifyUrl);
                 if (result != null)
                 {
                     if (result.ErrorNo == "1")
@@ -395,7 +395,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
             };
             try
             {
-                var detailResult = JsonHelp.PostDataResult(billDetailModel, PostType.InBillDetail, CurrentInfo.NotifyUrl);
+                var detailResult = JsonHelp.PostDataResult(billDetailModel, postType.InBillDetail, CurrentInfo.NotifyUrl);
                 if (detailResult != null)
                 {
                     if (detailResult.ErrorNo == "1")
@@ -445,7 +445,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                 KeyId = keyid ?? "",
                 BillId = ""
             };
-            var result = JsonHelp.PostDataResult(postModel, PostType.BillCmp, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(postModel, postType.BillCmp, CurrentInfo.NotifyUrl);
 
         }
         /// <summary>

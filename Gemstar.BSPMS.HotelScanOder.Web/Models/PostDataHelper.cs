@@ -16,6 +16,12 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
 {
     public class PostDataHelper
     {
+        PostType postType;
+        public PostDataHelper(PostType _postType)
+        {
+            postType = _postType;
+        }
+
         /// <summary>
         /// 获取消费项目（服务员使用）
         /// </summary>
@@ -101,7 +107,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
             var currentinfo = GetService<ICurrentInfo>();
             data = "";
             //获取接口数据
-            var result = JsonHelp.PostDataResult(model, PostType.GetItemList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.GetItemList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -156,7 +162,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
             };
             var resultModel = new SysInfoResultModel();
 
-            var result = JsonHelp.PostDataResult(postModel, PostType.GetSysInfo, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(postModel, postType.GetSysInfo, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -184,7 +190,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
                 ItemId = itemId,
                 UserCode = CurrentInfo.UserCode ?? ""
             };
-            var result = JsonHelp.PostDataResult(postModel, PostType.GetActionList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(postModel, postType.GetActionList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -215,7 +221,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
                 TabId = tabId
             };
             List<GetBillDetailActionResultModel> resultModel = new List<GetBillDetailActionResultModel>();
-            var result = JsonHelp.PostDataResult(postData, PostType.GetBillDetailAction, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(postData, postType.GetBillDetailAction, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -248,7 +254,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
             if (currentinfo.RefeId != refeId)
             {
                 //获取接口数据
-                var result = JsonHelp.PostDataResult(postModel, PostType.GetRequestList, CurrentInfo.NotifyUrl);
+                var result = JsonHelp.PostDataResult(postModel, postType.GetRequestList, CurrentInfo.NotifyUrl);
                 if (result != null)
                 {
                     if (result.ErrorNo == "1")
@@ -269,7 +275,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
                 if (string.IsNullOrEmpty(currentinfo.RequestList))
                 {
                     //获取接口数据
-                    var result = JsonHelp.PostDataResult(postModel, PostType.GetRequestList, CurrentInfo.NotifyUrl);
+                    var result = JsonHelp.PostDataResult(postModel, postType.GetRequestList, CurrentInfo.NotifyUrl);
                     if (result != null)
                     {
                         if (result.ErrorNo == "1")
@@ -348,7 +354,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
                 BillId = billId
             };
             List<BillDetailResultModel> resultModel = new List<BillDetailResultModel>();
-            var result = JsonHelp.PostDataResult(postData, PostType.GetBillDetail, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(postData, postType.GetBillDetail, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -409,7 +415,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
 
             };
             var list = new List<GetPayMethodResultModel>();
-            var result = JsonHelp.PostDataResult(posData, PostType.GetPayMethodList, CurrentInfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(posData, postType.GetPayMethodList, CurrentInfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")

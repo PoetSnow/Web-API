@@ -16,6 +16,8 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
 {
     public class HomeController : Controller
     {
+        PostType postType = new PostType();
+
         public ActionResult Index()
         {
 
@@ -25,6 +27,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
         [HttpPost, JsonException]
         public ActionResult Index(LoginPostModel model)
         {
+            
             //存储登录信息
             var currentinfo = GetService<ICurrentInfo>();
             currentinfo.Clear();
@@ -42,7 +45,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
 
             model.Hid = currentinfo.HotelId;    //设置酒店ID            
             ////判断用户是否登录成功
-            var result = JsonHelp.PostDataResult(model, PostType.Login, currentinfo.NotifyUrl);
+            var result = JsonHelp.PostDataResult(model, postType.Login, currentinfo.NotifyUrl);
             if (result != null)
             {
                 if (result.ErrorNo == "1")
@@ -82,7 +85,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
         {
             HotelInterfacePostModel hotelmodel = new HotelInterfacePostModel() { Hid = hid };
             //PostType.GetHotelSM 获取线上酒店的不用修改
-            var hotelresult = JsonHelp.PostDataResult(hotelmodel, PostType.GetHotelSM);
+            var hotelresult = JsonHelp.PostDataResult(hotelmodel, postType.GetHotelSM);
             if (hotelresult != null)
             {
                 if (hotelresult.ErrorNo != "0")

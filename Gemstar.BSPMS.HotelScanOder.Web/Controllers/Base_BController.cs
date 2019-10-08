@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Gemstar.BSPMS.HotelScanOrder.Common;
+using Gemstar.BSPMS.HotelScanOrder.Common.Common;
 using Gemstar.BSPMS.HotelScanOrder.Web.Models;
 
 namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
@@ -7,11 +8,14 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
     public class Base_BController : Controller
     {
 
+        public PostType postType { get { return new PostType(); } }
+
         /// <summary>
         /// 实例化业务处理类
         /// </summary>
 
-        protected PostDataHelper commonHelper = new PostDataHelper();
+        protected PostDataHelper commonHelper = new PostDataHelper(new PostType());
+
 
         /// <summary>
         /// 获取指定服务接口的实例
@@ -35,7 +39,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
                     _currentInfo = GetService<ICurrentInfo>();
                 }
                 return _currentInfo;
-            } 
+            }
         }
     }
 }

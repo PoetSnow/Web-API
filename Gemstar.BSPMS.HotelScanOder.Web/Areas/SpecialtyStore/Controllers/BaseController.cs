@@ -13,6 +13,8 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Areas.SpecialtyStore.Controllers
     public class BaseController : Controller
     {
 
+        public PostType postType { get { return new PostType(); } }
+
         /// <summary>
         /// 获取指定服务接口的实例
         /// </summary>
@@ -48,7 +50,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Areas.SpecialtyStore.Controllers
         /// <param name="postErrorModel">错误信息回传</param>
         /// <param name="hid">酒店ID</param>
         /// <returns></returns>
-        protected List<T> GetPostData<T>(object setdata, string posttype,  out PostErrorModel postErrorModel,string hid= "" )
+        protected List<T> GetPostData<T>(object setdata, string posttype, out PostErrorModel postErrorModel, string hid = "")
         {
             postErrorModel = null;
             var data = "";

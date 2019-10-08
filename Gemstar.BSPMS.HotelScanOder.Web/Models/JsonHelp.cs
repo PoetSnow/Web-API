@@ -72,17 +72,18 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models
         /// <param name="list"></param>
         private static void AddPostDataByLog(string type, string content, string hid, string module, List<PostData> list)
         {
+            PostType postType = new PostType();
             var serializer = new JavaScriptSerializer();
             OperLogPostModel model = new OperLogPostModel()
             {
                 Hid = hid,
-                OperType = PostType.OperLog,
+                OperType = postType.OperLog,
                 OperContent = type + ":" +content
             };
             var requestData = serializer.Serialize(model);
             PostData data = new PostData
             {              
-                BusinessType = PostType.OperLog,
+                BusinessType = postType.OperLog,
                 RequestData = requestData
             };
             list.Add(data);

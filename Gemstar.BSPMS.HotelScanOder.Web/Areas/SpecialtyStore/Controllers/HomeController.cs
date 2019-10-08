@@ -25,7 +25,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Areas.SpecialtyStore.Controllers
         public JsonResult Order(decimal price=0,string handcode="")
         {
             var sendata = new StoreOrderPostModel { price = price, handcode = handcode, computer = CurrentInfo.SNCode };
-            var res = base.GetPostData<StoreOrderResultModel>(sendata, PostType.SPA_StoreOrder, out PostErrorModel postErrorModel);
+            var res = base.GetPostData<StoreOrderResultModel>(sendata, postType.SPA_StoreOrder, out PostErrorModel postErrorModel);
             if (res == null || res.Count ==0)  //出现错误
             {
                 if (postErrorModel != null)

@@ -119,5 +119,8 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Models.Pay
                 return JsonResultData.Failure("买单失败！");
             }
         }
+
+
+        public PostType postType { get { return new PostType(); } }
     }
 }

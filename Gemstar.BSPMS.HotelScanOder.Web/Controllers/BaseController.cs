@@ -17,11 +17,14 @@ namespace Gemstar.BSPMS.HotelScanOrder.Web.Controllers
     [LoginAuthorize]
     public class BaseController : Controller
     {
+
+        public PostType postType { get { return new PostType(); } }
+
         /// <summary>
         /// 实例化业务处理类
         /// </summary>
 
-        protected PostDataHelper commonHelper = new PostDataHelper();
+        protected PostDataHelper commonHelper = new PostDataHelper(new PostType());
 
         /// <summary>
         /// 获取指定服务接口的实例
