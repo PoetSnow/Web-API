@@ -87,7 +87,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF
         /// <returns></returns>
         private static string GetBusinessType(string data)
         {
-            return data.Substring(0, 2);
+            return data.Substring(0, 4);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF
         /// <returns></returns>
         private static string GetErrorNo(string data)
         {
-            return data.Substring(2, 1);
+            return data.Substring(4, 1);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Gemstar.BSPMS.HotelScanOrder.Services.EF
         /// <returns></returns>
         private static string GetMsg(string data)
         {
-            return data.Substring(3);
+            return data.Substring(5);
         }
     }
 }
